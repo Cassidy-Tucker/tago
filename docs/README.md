@@ -1,9 +1,6 @@
 
 # PROJECT TITLE: TAGO
 
-Provide a project description here. What is your idea? How would you define the
-mission?
-
 Tago is a web application that uses Open CV, an open source computer vision and machine learning software library, to track the number of visitors to exhibits at the Missoula Art Museum. The mission is to gather data about the venue (where people are), store the data, and view the data.   
 
 ## Table of Contents
@@ -19,8 +16,6 @@ Tago is a web application that uses Open CV, an open source computer vision and 
 
 ## <a name="Technologies"></a>Technologies
 
-List every dependency your project has (including versions)
-
 OpenCV
 Python
 d3.js
@@ -32,10 +27,7 @@ mongoDB
 
 ## <a name="Team"></a>Team Structure
 
-Who does what? How have you defined these roles yourself? List every current
-team member here, maybe even include an email address for contacting.
-
-Jillian Burgan: jillian.burgan@gmailcom
+Jillian Burgan: jillian.burgan@gmail.com
   front-end
 
 Keesha Cain: keeshy19@gmail.com
@@ -56,11 +48,11 @@ Kerry Zahn: zahnahoria@yahoo.com
 ## <a name="File"></a>File Structure
 
 What is the file structure?
+tago
+  -docs/
 
 
 ## <a name="Git"></a>Git Structure
-
-How do you handle your branches? Who is the main contact for questions on this?
 
 All team members will create a working branch off of the staging branch.  Team members will push to the working branch.  Kerry will be in charge of pull requests and will be the pull request manager.
 
