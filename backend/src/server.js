@@ -1,6 +1,9 @@
 const path = require ('path');
 const express = require ('express');
 const app = express();
+const mongoose = require ('mongoose')
+
+mongoose.connect("mongodb://<Keesha>:<codeschool16>@ds113626.mlab.com:13626/tago_areas", {useMongoClient: true});
 
 app.get('/', (req, res) => res.send('Hello!'))
 
