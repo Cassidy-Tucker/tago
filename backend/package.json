@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
+    "mongoose": "^4.13.4",
     "webpack-preset-babel-stage-2": "^0.2.0"
   }
 }
