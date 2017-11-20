@@ -1,39 +1,49 @@
-##Data
+# Database Specs
 
-Area [
-  Zone {
-    id: String,
-    Name: String,
-    Description: String,
-    Tags: [
-      String,
-      String,
-      ex. Ansel Adams
-    ],
-    Created: Date,
-    Modified: Date,
-    Type: String
-    Interval: [
-      {
-        Date/Time: Date,
-        Count: integer
-        OpenCV: ??
-      }
-    ]  
-  }
-]
+The database structure will be organized in three collections: areas, zones, and heatmaps. Areas will be stored in independent documents and will link to corresponding zones and heat maps via the ObjectId.
 
-## events
+Zones will be stored as documents as well, and all intervals will be stored in the document. These intervals will be store as an array of objects. Zones will also use the objectID to link back to the parent area.
 
-Events: [
-  {
-    Description: String,
-    Start Date: Date,
-    End Date: Date
-    Tags: [
-      String,
-      String,
-      ex. Ansel Adams
-    ]
-  }
-]
+Each heatmap interval will be stored as independent documents, and will also use the object ID to link back to the parent area. A 16MB space restriction will prevent us from being able to store all heatmaps in one document.
+
+## Areas
+
+{
+	"id" : ObjectId("5a125a6112aa1cbde81976f8"),
+	"name" : "TestArea",
+	"heatmaps" : [
+    "id" : ObjectId("5a125a6112aa1cbde81063c4")
+  ],
+	"dateCreated" : NumberLong("1511177425000"),
+	"zones" : [
+		{
+			"name" : "Zone1",
+			"zoneId" : ObjectId("5a125a6112aa1cbde81976f9")
+		}
+	],
+	"description" : "it's in a room on the north side"
+}
+## Zones
+
+{
+	"id" : ObjectId("5a125a6112aa1cbde81976f9"),
+	"dateCreated" : NumberLong("1511177425000"),
+	"intervals" : [
+		{
+			"date" : "testDate",
+			"dateCreated" : NumberLong("1511177430000"),
+			"activity" : 0
+		}
+	],
+	"name" : "Zone1",
+	"area" : ObjectId("5a125a6112aa1cbde81976f8")
+}
+
+## Heatmaps
+
+{
+	"id" : ObjectId("5a125a6112aa1cbde81063c4"),
+	"dateCreated" : NumberLong("1511177425000"),
+	"area" : ObjectId("5a125a6112aa1cbde81976f8"),
+  "img" : BinaryImage
+}
