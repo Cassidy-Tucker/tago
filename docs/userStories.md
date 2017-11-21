@@ -1,4 +1,8 @@
-User Stories
+##### Mr. Manager The Event Planner#####
+
+## Epic Cases ##
+recording Attendance Data
+visualization of Attendance Data
 
 Event Planner
 
@@ -14,4 +18,4 @@ As an event planner I would like to review data
 
 - compare old data
 - view historical data
--
+- search through data by tags
