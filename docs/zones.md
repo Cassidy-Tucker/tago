@@ -1,3 +1,4 @@
+```javascript
 {
 	"_id" : ObjectId("5a14f04112aa1c752fc2f4a1"),
 	"intervals" : [
@@ -50,3 +51,4 @@
 	"name" : "Zone1",
 	"dateCreated" : NumberLong("1511346865000")
 }
+```
