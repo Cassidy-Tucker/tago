@@ -60304,49 +60304,18 @@ const path = __webpack_require__(17);
 const express = __webpack_require__(203);
 const app = express();
 const mongoose = __webpack_require__(133);
-const Domain = __webpack_require__(421);
-const Zone = __webpack_require__(423);
-const Heatmap = __webpack_require__(422);
+const DomainRouter = __webpack_require__(424);
+const ZoneRouter = __webpack_require__(425);
+const HeatmapRouter = __webpack_require__(426);
 
 mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", { useMongoClient: true });
 
 app.get('/', (req, res) => res.send('Hello!'));
 
 const router = express.Router();
-app.use('/api', router);
-
-router.route('/domain')
-/************************************************************
- ************************************************************/
-.get((req, res) => {
-  Domain.find((err, domain) => {
-    if (err) res.send(err);
-
-    res.json(domain);
-  });
-});
-router.route('/zone')
-/************************************************************
-
-************************************************************/
-.get((req, res) => {
-  Zone.find((err, zone) => {
-    if (err) res.send(err);
-
-    res.json(zone);
-  });
-});
-
-router.route('/heatmap')
-/************************************************************
- ************************************************************/
-.get((req, res) => {
-  Heatmap.find((err, heatmap) => {
-    if (err) res.send(err);
-
-    res.json(heatmap);
-  });
-});
+app.use('/api', DomainRouter);
+app.use('/api', ZoneRouter);
+app.use('/api', HeatmapRouter);
 
 app.listen(3001, () => console.log('working, yesh.. working'));
 
@@ -107517,14 +107486,13 @@ module.exports = mongoose.model('Domain', DomainSchema);
 const mongoose = __webpack_require__(133);
 const Schema = mongoose.Schema;
 
-const HeatmapsSchema = new Schema({
-    id: Number,
+const HeatmapSchema = new Schema({
     dateCreated: Number,
     area: Number,
     img: String
 });
 
-module.exports = mongoose.model('Heatmaps', HeatmapsSchema);
+module.exports = mongoose.model('Heatmap', HeatmapSchema);
 
 /***/ }),
 /* 423 */
@@ -107542,6 +107510,78 @@ const ZoneSchema = new Schema({
 });
 
 module.exports = mongoose.model('Zone', ZoneSchema);
+
+/***/ }),
+/* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const express = __webpack_require__(203);
+const mongoose = __webpack_require__(133);
+const app = express();
+
+const router = express.Router();
+
+const Domain = __webpack_require__(421);
+
+mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", { useMongoClient: true });
+
+router.route('/domain').get((req, res) => {
+  Domain.find((err, domain) => {
+    if (err) res.send(err);
+
+    res.json(domain);
+  });
+});
+
+module.exports = router;
+
+/***/ }),
+/* 425 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const express = __webpack_require__(203);
+const mongoose = __webpack_require__(133);
+const app = express();
+
+const router = express.Router();
+
+const Zone = __webpack_require__(423);
+
+mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", { useMongoClient: true });
+
+router.route('/zone').get((req, res) => {
+  Zone.find((err, zone) => {
+    if (err) res.send(err);
+
+    res.json(zone);
+  });
+});
+
+module.exports = router;
+
+/***/ }),
+/* 426 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const express = __webpack_require__(203);
+const mongoose = __webpack_require__(133);
+const app = express();
+
+const router = express.Router();
+
+const Heatmap = __webpack_require__(422);
+
+mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", { useMongoClient: true });
+
+router.route('/heatmap').get((req, res) => {
+  Heatmap.find((err, heatmap) => {
+    if (err) res.send(err);
+
+    res.json(heatmap);
+  });
+});
+
+module.exports = router;
 
 /***/ })
 /******/ ]);
