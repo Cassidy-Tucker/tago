@@ -134,11 +134,131 @@ a {
   text-align: center;
   text-decoration: none;
 }
- .section {
-   position: relative;
-   padding-top: 50px;
-   padding-bottom: 50px;
-   background-color: #fff;
-   font-family: monospace;
-   color: #e9dede;
- }
+
+.section {
+ position: relative;
+ padding-top: 50px;
+ padding-bottom: 50px;
+ background-color: #fff;
+ font-family: monospace;
+ color: #e9dede;
+}
+
+.section .centered {
+  text-align:center;
+}
+
+.section .accent {
+  background-color: #7096B9;
+  background-image: linear-gradient(112deg, #000, #fff);
+  background-image: linear-gradient(338deg, #000, #fff);
+}
+
+.section .dark {
+  background-color:  #5d5d5d;
+  color: #fff;
+}
+
+.hero-slider {
+  height: 455px;
+  background-color: transparent;
+}
+
+.slide {
+  padding: 82px 85px 85px 0px;
+  background-color: #dbdbdb;
+}
+
+.slide .two {
+  background-color: #dbdbdb;
+}
+
+.header-section {
+  padding-top: 104px;
+  padding-bottom: 104px;
+  background-color: #5d5d5d;
+  color: #fff;
+  text-align: center;
+}
+
+.page-heading {
+  margin-top: 0px;
+  margin-bottom: 11px;
+}
+
+.cta-section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.cta-section .centered {
+  text-align: center;
+}
+
+.cta-section-accented {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
+
+.cta-heading {
+  margin-top: 3px;
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+
+.cta-heading .inline-block {
+  display: inline-block;
+  margin-top: 0px;
+  margin-right: 13px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.white-box {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.fixed-image-section {
+  padding: 117px 10px;
+  background-image: -webkit-linear-gradient(270deg, rgb(0,0,0.25), rgb(0,0,0.25), url(https://d3e54v103j8qbb.cloudfront.net/img/example-bg.png));
+  background-image: linear-gradient(180deg, rgb(0,0,0.25), rgb(0,0,0.25), url(https://d3e54v103j8qbb.cloudfront.net/img/example-bg.png));
+  background-position: 0px, 0px, 50%, 50%;
+  background-size: auto, 125px;
+  background-attachment: scroll, fixed;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-section {
+  display: block;
+  height: 400px;
+  padding-top: 138px;
+  background-color: #BEB0B0;
+  text-align: center;
+}
+
+.hero-section .center {
+  text-align: center;
+}
+
+.slider-navigation {
+  font-size: 11px;
+}
+
+.slider-icon-circle {
+  width: 50px;
+  height: 50px;
+  padding: 6px;
+  font-size: 33px;
+}
+
+.hero-heading {
+  position: static;
+  font-family: Exo, sans-serif;
+  text-align: left;
+}
