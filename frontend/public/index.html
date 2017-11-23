@@ -3,17 +3,94 @@
   <head>
     <meta charset="utf-8">
     <title>Tago Visualizations</title>
+    <link rel="stylesheet" href="/css/style.css">
     <script language="javascript" type="text/javascript" src="./js/jquery-3.2.1.js"></script>
     <script language="javascript" type="text/javascript" src="./js/script.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
   </head>
+  <!-- <body>
+    <div class = "wrapper">
+      <div class="field field--is-search">
+          <input
+            type="search"
+            name="search"
+            placeholder="Keyword Search"
+            class="searchbox-query"/>
+          <button
+            type="submit"
+            class="btn searchbox-submitbtn">Search</button>
+      </div>
+        <header class = "header">WELCOME TO TAGO</header>
+          <p>Tago can help you VISUALIZE what the heck is
+          going on at the party, concert, museum, etc! We use OpenCV
+          and D3 technologies to show you the stuff we need to show you.
+          <br>Checkout what we've done (or havent done) here</br></p>
+        <section class = "heatmap">HEATMAP</section>
+          <p>The HEATMAP technology goes here.</p>
+        <section class = "graph">D3</section>
+          <p>Can you believe all the TECH we used?</p>
+      </div>
+  </body> -->
+
+
+
+
   <body>
-    <h1> Hello Tago Peeps </h1>
-    <div class="heatmap">
-      <h2>This is the Heatmap Container</h2>
-      <p>This should be where the heatmap goes</p>
-    <div class="d3graph">
-      <h3>This is the D3 Graph Container</h3>
-      <p>This is where the D3 graph lives</p>
-  </body>
-  </html>
+    <div class = "dark navigation-bar w-nav" data-animation="default" data-collapse='meduim' data-duration="400">
+      <a class = "brand-link left-spacing w-nav brand" href="/">
+        <h1 class = "brand-text"> TAGO</h1>
+      </a>
+      <nav class = "navigation-menu w-nav-menu" role="navigation"><a class = "navigation-link w-nav-link white" href="#"><HOME</a><a class ="navigation-link w-nav-link white" href='#'>ABOUT</a><a class = "navigation-link w-nav-link white" href="#">CONTACT</a></nav>
+      <div class ="hamburger-button w-nav-button white">
+        <div class = "w-icon-nav-menu"></div>
+      </div>
+    <div class = "hero-section">
+      <div class = "w-container" data-ix="fade-in-bottom-page-loads">
+        <h1 class = "hero-heading">WELCOME TO TAGO</h1>
+        <div class ="hero-subheading">Tago can help you visualize what the heck in going on at the party, concert, museum, and more!
+          <br>We use OpenCV and D3 technologies to show you stuff we need to show you.
+          <br>Checkout what we've done (or haven't done) here.</div>
+      </div>
+      <div class = "section">
+        <div class = "w-container">
+          <div class = "w-col w-col-6 waterfall-content-column">
+            <h2 class = "section heading">Heat-maps</h2>
+            <div class = "section-subheading">The HEATMAP teachnology goes here.</div>
+          </div>
+        <div class = "w-col w-col-6 waterfall-image-column"><img sizes = "(max-width: 479px) 75vw 291px" src="images/photo-1444444.jpg" srcset = "images/photo-144444.jpeg 500w, images/photo-1444442.jpeg 1080w, images/photo-14444223.jpeg 1300" width= "291"></div>
+      </div>
+    </div>
+  </div>
+  <div class "accent section">
+    <div class = "w-container">
+      <div class = "w-row">
+        <div class = "w-col w-col-6 waterfall-image-column"><img sizes = "(max-width: 479px) 75vw 291px" src="images/photo-1444444.jpg" srcset = "images/photo-144444.jpeg 500w, images/photo-1444442.jpeg 1080w, images/photo-14444223.jpeg 1300" width= "291"></div>
+        <div class = "w-col w-col-6 waterfall-content-column">
+          <h2 class = "section-heading">D3 Graphs</h2>
+          <div class = "section-subheading">Can you believe all the TECH we used?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class = "section">
+  <div class = "section-title-group">
+    <h2 class = "centered section-heading">Contact Form</h2>
+    <div class = "center section-subheading">Use the form below to send us a message</div>
+  </div>
+  <div class = "form-wrapper squeezed w-form">
+    <form data-name = "Email Form" id = "email-form" name = "email-form"><label class = "form-label" for = "name">Name:</label><input class = "form-field w-input" data-name = "name" maxlength="256" name= "name" type= "text"><label class = "form-label" for = "email">Email Address:</label><input class = "form-field w input" data-name="Email" id="email" maxlength="256" name="email" required="required" type="email"><label class = "form-label" for= "field">MESSAGE:</label><textarea class = "form-field text-area w-input" id="field"></textarea><input class = "button full-width w-button" data-wait="Please wait..." type = "submit" value = "Submit"></form>
+    <div class = "success-wrapper w-form-done">
+      <p class ="success-message">Thank you! Your submission has been recieved!</p>
+    </div>
+    <div class = "error-wrapper w-form-fail">
+      <p class = "error-message">Oops! Something went wrong!</p>
+    </div>
+  </div>
+</div>
+<div class = "accent footer">
+  <div class "w-container">
+    <div class = "footer-text">Copyright Tago Visualizations</div>
+  </div>
+</div>
+</body>
+</html>
