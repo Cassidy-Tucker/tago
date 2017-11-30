@@ -1,0 +1,68 @@
+[{
+  _id: "5a1f4d5674fece1f652effb9",
+  name: "TestArea",
+  dateCreated: 1512026054000,
+  description: "it's in a room on the north side",
+  zones: [{
+      zoneId: "5a1f4d5774fece1f652effba",
+      name: "zone1"
+    },
+    {
+      zoneId: "5a1f4d5774fece1f652effbb",
+      name: "zone2"
+    },
+    {
+      zoneId: "5a1f4d5774fece1f652effbc",
+      name: "zone3"
+    }
+  ],
+  heatmaps: [{
+      id: "5a1f4d5c74fece1f652effbd"
+    },
+    {
+      id: "5a1f4d6174fece1f652effbe"
+    },
+    {
+      id: "5a1f4d6674fece1f652effbf"
+    },
+    {
+      id: "5a1f4d6b74fece1f652effc0"
+    },
+    {
+      id: "5a1f4d7074fece1f652effc1"
+    },
+    {
+      id: "5a1f4d7574fece1f652effc2"
+    },
+    {
+      id: "5a1f4d7a74fece1f652effc3"
+    },
+    {
+      id: "5a1f4d7f74fece1f652effc4"
+    },
+    {
+      id: "5a1f4d8474fece1f652effc5"
+    },
+    {
+      id: "5a1f4d8974fece1f652effc6"
+    },
+    {
+      id: "5a1f4d8e74fece1f652effc7"
+    },
+    {
+      id: "5a1f4d9374fece1f652effc8"
+    },
+    {
+      id: "5a1f4d9874fece1f652effc9"
+    },
+    {
+      id: "5a1f4d9d74fece1f652effca"
+    },
+    {
+      id: "5a1f4da274fece1f652effcb"
+    },
+    {
+      id: "5a1f4da774fece1f652effcc"
+    }
+  ]
+}]
