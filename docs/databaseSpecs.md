@@ -1,6 +1,6 @@
 # Database Specs
 
-The database structure will be organized in three collections: domains, zones, and heatmaps. Areas will be stored in independent documents and will link to corresponding zones and heat maps via the ObjectId.
+The database structure will be organized in three collections: domains, zones, and heatmaps. Domains will be stored in independent documents and will link to corresponding zones and heat maps via the ObjectId.
 
 Zones will be stored as documents as well, and all intervals will be stored in the document. These intervals will be stored as an array of objects. Zones will also use the objectID to link back to the parent area.
 
