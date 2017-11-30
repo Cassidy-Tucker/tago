@@ -1,12 +1,16 @@
 # Database Specs
 
-The database structure will be organized in three collections: areas, zones, and heatmaps. Areas will be stored in independent documents and will link to corresponding zones and heat maps via the ObjectId.
+The database structure will be organized in three collections: domains, zones, and heatmaps. Areas will be stored in independent documents and will link to corresponding zones and heat maps via the ObjectId.
 
 Zones will be stored as documents as well, and all intervals will be stored in the document. These intervals will be stored as an array of objects. Zones will also use the objectID to link back to the parent area.
 
+Each Zone interval contains a dateCreated which is stored in ISO string format, and an activity count which is the overall activity of the zone. The activity will range from 0-255.
+
 Each heatmap interval will be stored as independent documents, and will also use the object ID to link back to the parent area. A 16MB space restriction will prevent us from being able to store all heatmaps in one document.
 
-## Areas
+Each heatmap interval contains a dateCreated and an image. The dateCreated is stored as in ISO string format. The images are encoded using base64 encoding and are png file types.
+
+## Domains
 
 ```javascript
 {
