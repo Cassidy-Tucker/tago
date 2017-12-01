@@ -18,4 +18,23 @@ router.route('/heatmap')
     });
   });
 
+  router.route('/heatmap/:heatmap_id')
+    .get((req,res) => {
+      Heatmap.findById(req.params.heatmap_id, (err, heatmap) => {
+        if(err)
+        res.send(err);
+
+        res.json(heatmap);
+      })
+    })
+
+  router.route('/heatmap/date/:heatmap_dateCreated')
+  .get((req,res) => {
+    Heatmap.findOne({'dateCreated' : req.params.heatmap_dateCreated}, (err, heatmap) => {
+      if(err)
+      res.send(err);
+
+      res.json(heatmpa);
+    })
+  })
   module.exports = router;

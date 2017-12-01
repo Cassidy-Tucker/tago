@@ -18,4 +18,24 @@ router.route('/domain')
     })
   })
 
+  router.route('/domain/:domain_id')
+    .get((req,res) => {
+      Domain.findById(req.params.domain_id, (err, domain) => {
+        if(err)
+        res.send(err);
+
+        res.json(domain);
+      })
+    })
+
+  router.route('/domain/date/:domain_dateCreated')
+  .get((req,res) => {
+    Domain.findOne({'dateCreated' : req.params.domain_dateCreated}, (err, domain) => {
+      if(err)
+      res.send(err);
+
+      res.json(domain);
+    })
+  })
+
   module.exports = router;
