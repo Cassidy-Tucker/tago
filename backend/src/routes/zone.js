@@ -18,4 +18,24 @@ router.route('/zone')
     });
   });
 
+  router.route('/zone/:zone_id')
+    .get((req,res) => {
+      Zone.findById(req.params.zone_id, (err, zone) => {
+        if(err)
+        res.send(err);
+
+        res.json(zone);
+      })
+    })
+
+  router.route('/zone/date/:zone_dateCreated')
+  .get((req,res) => {
+    Zone.findOne({'dateCreated' : req.params.zone_dateCreated}, (err, zone) => {
+      if(err)
+      res.send(err);
+
+      res.json(zone);
+    })
+  })
+
     module.exports = router;
