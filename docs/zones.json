@@ -1,262 +1,514 @@
 [{
-    _id: "5a1f4d5774fece1f652effba",
-    domain: "5a1f4d5674fece1f652effb9",
-    name: "zone1",
-    dateCreated: 1512026055000,
-    intervals: [{
-        activity: 0,
-        dateCreated: 1512026060000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026065000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026070000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026075000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026080000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026085000,
-        date: "testDate"
-      },
-      {
-        activity: 9.527272727272727,
-        dateCreated: 1512026090000,
-        date: "testDate"
-      },
-      {
-        activity: 56.05361781076066,
-        dateCreated: 1512026095000,
-        date: "testDate"
-      },
-      {
-        activity: 49.34786641929499,
-        dateCreated: 1512026100000,
-        date: "testDate"
-      },
-      {
-        activity: 49.17179962894249,
-        dateCreated: 1512026105000,
-        date: "testDate"
-      },
-      {
-        activity: 51.877365491651204,
-        dateCreated: 1512026110000,
-        date: "testDate"
-      },
-      {
-        activity: 62.08256029684601,
-        dateCreated: 1512026115000,
-        date: "testDate"
-      },
-      {
-        activity: 41.16289424860853,
-        dateCreated: 1512026120000,
-        date: "testDate"
-      },
-      {
-        activity: 28.225974025974025,
-        dateCreated: 1512026125000,
-        date: "testDate"
-      },
-      {
-        activity: 20.401484230055658,
-        dateCreated: 1512026130000,
-        date: "testDate"
-      },
-      {
-        activity: 16.61168831168831,
-        dateCreated: 1512026135000,
-        date: "testDate"
-      }
-    ]
-  },
-  {
-    _id: "5a1f4d5774fece1f652effbb",
-    domain: "5a1f4d5674fece1f652effb9",
-    name: "zone2",
-    dateCreated: 1512026055000,
-    intervals: [{
-        activity: 0,
-        dateCreated: 1512026060000,
-        date: "testDate"
-      },
-      {
-        activity: 0,
-        dateCreated: 1512026065000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026070000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026075000,
-        date: "testDate"
-      },
-      {
-        activity: 27.36472148541114,
-        dateCreated: 1512026080000,
-        date: "testDate"
-      },
-      {
-        activity: 90.1143899204244,
-        dateCreated: 1512026085000,
-        date: "testDate"
-      },
-      {
-        activity: 63.756299734748005,
-        dateCreated: 1512026090000,
-        date: "testDate"
-      },
-      {
-        activity: 41.474137931034484,
-        dateCreated: 1512026095000,
-        date: "testDate"
-      },
-      {
-        activity: 26.474469496021218,
-        dateCreated: 1512026100000,
-        date: "testDate"
-      },
-      {
-        activity: 16.20159151193634,
-        dateCreated: 1512026105000,
-        date: "testDate"
-      },
-      {
-        activity: 16,
-        dateCreated: 1512026110000,
-        date: "testDate"
-      },
-      {
-        activity: 16,
-        dateCreated: 1512026115000,
-        date: "testDate"
-      },
-      {
-        activity: 16.000663129973475,
-        dateCreated: 1512026120000,
-        date: "testDate"
-      },
-      {
-        activity: 26.658488063660474,
-        dateCreated: 1512026125000,
-        date: "testDate"
-      },
-      {
-        activity: 27.437002652519894,
-        dateCreated: 1512026130000,
-        date: "testDate"
-      },
-      {
-        activity: 35.02254641909814,
-        dateCreated: 1512026135000,
-        date: "testDate"
-      }
-    ]
-  },
-  {
-    _id: "5a1f4d5774fece1f652effbc",
-    domain: "5a1f4d5674fece1f652effb9",
-    name: "zone3",
-    dateCreated: 1512026055000,
-    intervals: [{
-        activity: 0,
-        dateCreated: 1512026060000,
-        date: "testDate"
-      },
-      {
-        activity: 0,
-        dateCreated: 1512026065000,
-        date: "testDate"
-      },
-      {
-        activity: 0,
-        dateCreated: 1512026070000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026075000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026080000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026085000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026090000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026095000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026100000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026105000,
-        date: "testDate"
-      },
-      {
-        activity: 8,
-        dateCreated: 1512026110000,
-        date: "testDate"
-      },
-      {
-        activity: 15.602691511387164,
-        dateCreated: 1512026115000,
-        date: "testDate"
-      },
-      {
-        activity: 64.81656314699794,
-        dateCreated: 1512026120000,
-        date: "testDate"
-      },
-      {
-        activity: 60.005797101449275,
-        dateCreated: 1512026125000,
-        date: "testDate"
-      },
-      {
-        activity: 38.554865424430645,
-        dateCreated: 1512026130000,
-        date: "testDate"
-      },
-      {
-        activity: 44.38985507246377,
-        dateCreated: 1512026135000,
-        date: "testDate"
-      }
-    ]
-  }
-]
+  "_id": "5a20c73174fece06bba55706",
+  "domain": "5a20c73074fece06bba55705",
+  "name": "zone1",
+  "dateCreated": 1512122785000,
+  "intervals": [{
+    "activity": 0,
+    "dateCreated": 1512122790000
+  }, {
+    "activity": 8,
+    "dateCreated": 1512122795000
+  }, {
+    "activity": 8,
+    "dateCreated": 1512122800000
+  }, {
+    "activity": 8,
+    "dateCreated": 1512122805000
+  }, {
+    "activity": 10.638134592680046,
+    "dateCreated": 1512122810000
+  }, {
+    "activity": 10.875578966488057,
+    "dateCreated": 1512122815000
+  }, {
+    "activity": 13.028380710198892,
+    "dateCreated": 1512122820000
+  }, {
+    "activity": 14.458269003723549,
+    "dateCreated": 1512122825000
+  }, {
+    "activity": 33.85155753337571,
+    "dateCreated": 1512122830000
+  }, {
+    "activity": 50.10344201253292,
+    "dateCreated": 1512122835000
+  }, {
+    "activity": 55.51480337843974,
+    "dateCreated": 1512122840000
+  }, {
+    "activity": 45.65652529288893,
+    "dateCreated": 1512122845000
+  }, {
+    "activity": 37.70620288802107,
+    "dateCreated": 1512122850000
+  }, {
+    "activity": 31.664063209517753,
+    "dateCreated": 1512122855000
+  }, {
+    "activity": 37.58882027063845,
+    "dateCreated": 1512122860000
+  }, {
+    "activity": 34.35859594950504,
+    "dateCreated": 1512122865000
+  }, {
+    "activity": 30.148442466624285,
+    "dateCreated": 1512122870000
+  }, {
+    "activity": 25.682817182817182,
+    "dateCreated": 1512122875000
+  }, {
+    "activity": 22.059985469076377,
+    "dateCreated": 1512122880000
+  }, {
+    "activity": 28.963173190445918,
+    "dateCreated": 1512122885000
+  }, {
+    "activity": 37.10244301153392,
+    "dateCreated": 1512122890000
+  }, {
+    "activity": 43.64308418853873,
+    "dateCreated": 1512122895000
+  }, {
+    "activity": 48.75964944146762,
+    "dateCreated": 1512122900000
+  }, {
+    "activity": 39.62219598583235,
+    "dateCreated": 1512122905000
+  }, {
+    "activity": 31.47230042684588,
+    "dateCreated": 1512122910000
+  }, {
+    "activity": 30.04817909363364,
+    "dateCreated": 1512122915000
+  }, {
+    "activity": 33.27240940877304,
+    "dateCreated": 1512122920000
+  }, {
+    "activity": 30.446598855689764,
+    "dateCreated": 1512122925000
+  }, {
+    "activity": 28.69852874398329,
+    "dateCreated": 1512122930000
+  }, {
+    "activity": 27.379211697393515,
+    "dateCreated": 1512122935000
+  }, {
+    "activity": 26.7269548633185,
+    "dateCreated": 1512122940000
+  }, {
+    "activity": 25.436881300517662,
+    "dateCreated": 1512122945000
+  }, {
+    "activity": 22.49845608936518,
+    "dateCreated": 1512122950000
+  }, {
+    "activity": 20.16265552629189,
+    "dateCreated": 1512122955000
+  }, {
+    "activity": 18.78457905730633,
+    "dateCreated": 1512122960000
+  }, {
+    "activity": 28.225274725274726,
+    "dateCreated": 1512122965000
+  }, {
+    "activity": 40.430024520933614,
+    "dateCreated": 1512122970000
+  }, {
+    "activity": 50.17541549359731,
+    "dateCreated": 1512122975000
+  }, {
+    "activity": 46.27000272454818,
+    "dateCreated": 1512122980000
+  }, {
+    "activity": 47.26977567886659,
+    "dateCreated": 1512122985000
+  }, {
+    "activity": 52.83298519662156,
+    "dateCreated": 1512122990000
+  }, {
+    "activity": 61.566478975569886,
+    "dateCreated": 1512122995000
+  }, {
+    "activity": 64.11334120425029,
+    "dateCreated": 1512123000000
+  }, {
+    "activity": 65.83993279447824,
+    "dateCreated": 1512123005000
+  }, {
+    "activity": 71.30101716465353,
+    "dateCreated": 1512123010000
+  }, {
+    "activity": 64.91058941058941,
+    "dateCreated": 1512123015000
+  }, {
+    "activity": 66.17382617382617,
+    "dateCreated": 1512123020000
+  }, {
+    "activity": 69.20311506675142,
+    "dateCreated": 1512123025000
+  }, {
+    "activity": 59.91535736990282,
+    "dateCreated": 1512123030000
+  }, {
+    "activity": 57.30973571882662,
+    "dateCreated": 1512123035000
+  }, {
+    "activity": 52.58986468077377,
+    "dateCreated": 1512123040000
+  }, {
+    "activity": 46.840931795477246,
+    "dateCreated": 1512123045000
+  }, {
+    "activity": 42.442602851693756,
+    "dateCreated": 1512123050000
+  }, {
+    "activity": 37.946280991735534,
+    "dateCreated": 1512123055000
+  }, {
+    "activity": 42.8570066297339,
+    "dateCreated": 1512123060000
+  }]
+}, {
+  "_id": "5a20c73174fece06bba55707",
+  "domain": "5a20c73074fece06bba55705",
+  "name": "zone2",
+  "dateCreated": 1512122785000,
+  "intervals": [{
+    "activity": 0,
+    "dateCreated": 1512122790000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122795000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122800000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122805000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122810000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122815000
+  }, {
+    "activity": 8,
+    "dateCreated": 1512122820000
+  }, {
+    "activity": 8,
+    "dateCreated": 1512122825000
+  }, {
+    "activity": 8,
+    "dateCreated": 1512122830000
+  }, {
+    "activity": 8,
+    "dateCreated": 1512122835000
+  }, {
+    "activity": 8,
+    "dateCreated": 1512122840000
+  }, {
+    "activity": 31.10870273794003,
+    "dateCreated": 1512122845000
+  }, {
+    "activity": 50.92025206431986,
+    "dateCreated": 1512122850000
+  }, {
+    "activity": 63.41471099521947,
+    "dateCreated": 1512122855000
+  }, {
+    "activity": 64.65764884832682,
+    "dateCreated": 1512122860000
+  }, {
+    "activity": 73.10544328552804,
+    "dateCreated": 1512122865000
+  }, {
+    "activity": 81.90553020425902,
+    "dateCreated": 1512122870000
+  }, {
+    "activity": 65.09588222511951,
+    "dateCreated": 1512122875000
+  }, {
+    "activity": 67.15237940026076,
+    "dateCreated": 1512122880000
+  }, {
+    "activity": 51.361364624076494,
+    "dateCreated": 1512122885000
+  }, {
+    "activity": 38.23120382442416,
+    "dateCreated": 1512122890000
+  }, {
+    "activity": 27.73305084745763,
+    "dateCreated": 1512122895000
+  }, {
+    "activity": 20.715286831812257,
+    "dateCreated": 1512122900000
+  }, {
+    "activity": 29.21919817470665,
+    "dateCreated": 1512122905000
+  }, {
+    "activity": 43.32312038244242,
+    "dateCreated": 1512122910000
+  }, {
+    "activity": 39.71528683181226,
+    "dateCreated": 1512122915000
+  }, {
+    "activity": 30.419545849630598,
+    "dateCreated": 1512122920000
+  }, {
+    "activity": 29.94209039548023,
+    "dateCreated": 1512122925000
+  }, {
+    "activity": 40.654932637983485,
+    "dateCreated": 1512122930000
+  }, {
+    "activity": 42.366797044763146,
+    "dateCreated": 1512122935000
+  }, {
+    "activity": 35.583876575402,
+    "dateCreated": 1512122940000
+  }, {
+    "activity": 45.26912212081704,
+    "dateCreated": 1512122945000
+  }, {
+    "activity": 39.730932203389834,
+    "dateCreated": 1512122950000
+  }, {
+    "activity": 42.1703607127336,
+    "dateCreated": 1512122955000
+  }, {
+    "activity": 46.22729248152977,
+    "dateCreated": 1512122960000
+  }, {
+    "activity": 48.34577357670578,
+    "dateCreated": 1512122965000
+  }, {
+    "activity": 48.48598435462843,
+    "dateCreated": 1512122970000
+  }, {
+    "activity": 50.03232290308562,
+    "dateCreated": 1512122975000
+  }, {
+    "activity": 48.820512820512825,
+    "dateCreated": 1512122980000
+  }, {
+    "activity": 36.35832246849196,
+    "dateCreated": 1512122985000
+  }, {
+    "activity": 28.204802259887007,
+    "dateCreated": 1512122990000
+  }, {
+    "activity": 22.046338548457193,
+    "dateCreated": 1512122995000
+  }, {
+    "activity": 28.72001303780965,
+    "dateCreated": 1512123000000
+  }, {
+    "activity": 33.88575619295958,
+    "dateCreated": 1512123005000
+  }, {
+    "activity": 43.04845719252499,
+    "dateCreated": 1512123010000
+  }, {
+    "activity": 42.14406779661017,
+    "dateCreated": 1512123015000
+  }, {
+    "activity": 41.73120382442416,
+    "dateCreated": 1512123020000
+  }, {
+    "activity": 40.461810082572796,
+    "dateCreated": 1512123025000
+  }, {
+    "activity": 40.710451977401135,
+    "dateCreated": 1512123030000
+  }, {
+    "activity": 38.161125597566276,
+    "dateCreated": 1512123035000
+  }, {
+    "activity": 42.903737505432424,
+    "dateCreated": 1512123040000
+  }, {
+    "activity": 43.73641894828336,
+    "dateCreated": 1512123045000
+  }, {
+    "activity": 43.541883963494136,
+    "dateCreated": 1512123050000
+  }, {
+    "activity": 41.677422859626255,
+    "dateCreated": 1512123055000
+  }, {
+    "activity": 38.40313993915689,
+    "dateCreated": 1512123060000
+  }]
+}, {
+  "_id": "5a20c73174fece06bba55708",
+  "domain": "5a20c73074fece06bba55705",
+  "name": "zone3",
+  "dateCreated": 1512122785000,
+  "intervals": [{
+    "activity": 0,
+    "dateCreated": 1512122790000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122795000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122800000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122805000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122810000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122815000
+  }, {
+    "activity": 0,
+    "dateCreated": 1512122820000
+  }, {
+    "activity": 8.787114559934654,
+    "dateCreated": 1512122825000
+  }, {
+    "activity": 8.746069021850111,
+    "dateCreated": 1512122830000
+  }, {
+    "activity": 17.86052685317541,
+    "dateCreated": 1512122835000
+  }, {
+    "activity": 14.0664692668981,
+    "dateCreated": 1512122840000
+  }, {
+    "activity": 13.555748417398407,
+    "dateCreated": 1512122845000
+  }, {
+    "activity": 13.459873391872573,
+    "dateCreated": 1512122850000
+  }, {
+    "activity": 21.70155197059424,
+    "dateCreated": 1512122855000
+  }, {
+    "activity": 33.14416989993874,
+    "dateCreated": 1512122860000
+  }, {
+    "activity": 84.04523177455584,
+    "dateCreated": 1512122865000
+  }, {
+    "activity": 119.48121298754339,
+    "dateCreated": 1512122870000
+  }, {
+    "activity": 140.55329793751275,
+    "dateCreated": 1512122875000
+  }, {
+    "activity": 139.98202981417194,
+    "dateCreated": 1512122880000
+  }, {
+    "activity": 120.08015111292627,
+    "dateCreated": 1512122885000
+  }, {
+    "activity": 100.77128854400652,
+    "dateCreated": 1512122890000
+  }, {
+    "activity": 87.27588319379211,
+    "dateCreated": 1512122895000
+  }, {
+    "activity": 75.63028384725342,
+    "dateCreated": 1512122900000
+  }, {
+    "activity": 66.90626914437411,
+    "dateCreated": 1512122905000
+  }, {
+    "activity": 50.65805595262405,
+    "dateCreated": 1512122910000
+  }, {
+    "activity": 37.58219317949765,
+    "dateCreated": 1512122915000
+  }, {
+    "activity": 28.985399224014703,
+    "dateCreated": 1512122920000
+  }, {
+    "activity": 21.891668368388807,
+    "dateCreated": 1512122925000
+  }, {
+    "activity": 17.881560138860525,
+    "dateCreated": 1512122930000
+  }, {
+    "activity": 16.166224218909537,
+    "dateCreated": 1512122935000
+  }, {
+    "activity": 15.941290586073105,
+    "dateCreated": 1512122940000
+  }, {
+    "activity": 15.940473759444558,
+    "dateCreated": 1512122945000
+  }, {
+    "activity": 16.044108637941598,
+    "dateCreated": 1512122950000
+  }, {
+    "activity": 19.10057177863998,
+    "dateCreated": 1512122955000
+  }, {
+    "activity": 17.445374719215845,
+    "dateCreated": 1512122960000
+  }, {
+    "activity": 16.439146416173166,
+    "dateCreated": 1512122965000
+  }, {
+    "activity": 15.981723504186236,
+    "dateCreated": 1512122970000
+  }, {
+    "activity": 15.940473759444558,
+    "dateCreated": 1512122975000
+  }, {
+    "activity": 16.095670818868694,
+    "dateCreated": 1512122980000
+  }, {
+    "activity": 24.102001225239942,
+    "dateCreated": 1512122985000
+  }, {
+    "activity": 27.15826015928119,
+    "dateCreated": 1512122990000
+  }, {
+    "activity": 21.453338778844188,
+    "dateCreated": 1512122995000
+  }, {
+    "activity": 17.715540126608126,
+    "dateCreated": 1512123000000
+  }, {
+    "activity": 16.09250561568307,
+    "dateCreated": 1512123005000
+  }, {
+    "activity": 15.998876863385746,
+    "dateCreated": 1512123010000
+  }, {
+    "activity": 15.998876863385746,
+    "dateCreated": 1512123015000
+  }, {
+    "activity": 15.998876863385746,
+    "dateCreated": 1512123020000
+  }, {
+    "activity": 15.998876863385746,
+    "dateCreated": 1512123025000
+  }, {
+    "activity": 15.998876863385746,
+    "dateCreated": 1512123030000
+  }, {
+    "activity": 21.108740044925465,
+    "dateCreated": 1512123035000
+  }, {
+    "activity": 26.381764345517663,
+    "dateCreated": 1512123040000
+  }, {
+    "activity": 30.5019399632428,
+    "dateCreated": 1512123045000
+  }, {
+    "activity": 33.40524811108842,
+    "dateCreated": 1512123050000
+  }, {
+    "activity": 34.89912191137431,
+    "dateCreated": 1512123055000
+  }, {
+    "activity": 35.50051051664284,
+    "dateCreated": 1512123060000
+  }]
+}]
