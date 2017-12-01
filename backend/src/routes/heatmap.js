@@ -34,7 +34,24 @@ router.route('/heatmap')
       if(err)
       res.send(err);
 
-      res.json(heatmpa);
+      res.json(heatmap);
     })
   })
+
+  router.route('/heatmap/query/:query_value')
+  .get((req, res) => {
+    let queryValue = req.params.query_value;
+    let query = { $or : [
+      { name : queryValue },
+      { dateCreated : queryValue }
+    ]};
+
+    Heatmap.find(query, (err, heatmap) => {
+      if(err)
+        console.log(err);
+
+      res.json(heatmap);
+    });
+  });
+
   module.exports = router;

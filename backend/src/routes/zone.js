@@ -38,4 +38,20 @@ router.route('/zone')
     })
   })
 
+  router.route('/zone/query/:query_value')
+  .get((req, res) => {
+    let queryValue = req.params.query_value;
+    let query = { $or : [
+      { name : queryValue },
+      { dateCreated : queryValue }
+    ]};
+
+    Zone.find(query, (err, zone) => {
+      if(err)
+        console.log(err);
+
+        res.json(zone);
+    });
+  });
+
     module.exports = router;
