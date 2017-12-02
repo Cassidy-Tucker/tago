@@ -8,7 +8,7 @@
 - [Zone](#Zone)
 - [Heatmap](#Heatmap)
 
-### Domain
+### Domain 
 
 **GET** /domain - Returns all domains in the database
 
