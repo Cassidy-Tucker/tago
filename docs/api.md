@@ -2,7 +2,7 @@
 
 [ base url: http://localhost:3001/api ]
 
-##Sections
+## Sections
 
 - [Domain](#Domain)
 - [Zone](#Zone)
