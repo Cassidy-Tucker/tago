@@ -55,12 +55,19 @@ router.route('/domain/current')
 
 router.route('/domain/query/:query_value')
 .get((req, res) => {
-  let queryValue = req.params.query_value;
-  let query = { $or : [
-    { name : queryValue },
-    { description : { $regex : RegExp(queryValue) }},
-    { dateCreated : queryValue }
-  ]};
+  const queryValue = req.params.query_value;
+  let query = {}
+
+  if(isNaN(Number(queryValue))) {
+    query = { $or : [
+        { name : queryValue },
+        { description : { $regex : RegExp(queryValue) }}
+    ]};
+  } else {
+    query = { $or : [
+        { dateCreated : Number(queryValue) }
+    ]};
+  }
 
   Domain.find(query, (err, domain) => {
     if(err)

@@ -40,11 +40,18 @@ router.route('/heatmap')
 
   router.route('/heatmap/query/:query_value')
   .get((req, res) => {
-    let queryValue = req.params.query_value;
-    let query = { $or : [
-      { name : queryValue },
-      { dateCreated : queryValue }
-    ]};
+    const queryValue = req.params.query_value;
+    let query = {}
+
+    if(isNaN(Number(queryValue))) {
+      query = { $or : [
+        { domain : queryValue }
+      ]};
+    } else {
+      query = { $or : [
+        { dateCreated : Number(queryValue) }
+      ]};
+    }
 
     Heatmap.find(query, (err, heatmap) => {
       if(err)
