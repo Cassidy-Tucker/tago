@@ -60117,8 +60117,14 @@ router.route('/domain/current').get((req, res) => {
 });
 
 router.route('/domain/query/:query_value').get((req, res) => {
-  let queryValue = req.params.query_value;
-  let query = { $or: [{ name: queryValue }, { description: { $regex: RegExp(queryValue) } }, { dateCreated: queryValue }] };
+  const queryValue = req.params.query_value;
+  let query = {};
+
+  if (isNaN(Number(queryValue))) {
+    query = { $or: [{ name: queryValue }, { description: { $regex: RegExp(queryValue) } }] };
+  } else {
+    query = { $or: [{ dateCreated: Number(queryValue) }] };
+  }
 
   Domain.find(query, (err, domain) => {
     if (err) console.log(err);
@@ -60168,8 +60174,14 @@ router.route('/heatmap/date/:heatmap_dateCreated').get((req, res) => {
 });
 
 router.route('/heatmap/query/:query_value').get((req, res) => {
-  let queryValue = req.params.query_value;
-  let query = { $or: [{ name: queryValue }, { dateCreated: queryValue }] };
+  const queryValue = req.params.query_value;
+  let query = {};
+
+  if (isNaN(Number(queryValue))) {
+    query = { $or: [{ domain: queryValue }] };
+  } else {
+    query = { $or: [{ dateCreated: Number(queryValue) }] };
+  }
 
   Heatmap.find(query, (err, heatmap) => {
     if (err) console.log(err);
@@ -60219,8 +60231,14 @@ router.route('/zone/date/:zone_dateCreated').get((req, res) => {
 });
 
 router.route('/zone/query/:query_value').get((req, res) => {
-  let queryValue = req.params.query_value;
-  let query = { $or: [{ name: queryValue }, { dateCreated: queryValue }] };
+  const queryValue = req.params.query_value;
+  let query = {};
+
+  if (isNaN(Number(queryValue))) {
+    query = { $or: [{ name: queryValue }] };
+  } else {
+    query = { $or: [{ dateCreated: Number(queryValue) }] };
+  }
 
   Zone.find(query, (err, zone) => {
     if (err) console.log(err);
