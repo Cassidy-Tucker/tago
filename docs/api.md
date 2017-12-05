@@ -8,7 +8,7 @@
 - [Zone](#Zone)
 - [Heatmap](#Heatmap)
 
-### Domain 
+### Domain
 
 **GET** /domain - Returns all domains in the database
 
@@ -24,7 +24,7 @@
 
 **GET** /zone - Returns all zones in the database
 
-**GET** /zone/*{zoneId}* - Returns on domain that matches the zone ID.
+**GET** /zone/id/*{zoneId}* - Returns on domain that matches the zone ID.
 
 **GET** /zone/date/*{dateCreated}* - Returns one domain that matches date created.
 
@@ -34,7 +34,7 @@
 
 **GET** /Heatmap - Returns all heatmaps in the database
 
-**GET** /heatmap/*{heatmapId}* - returns one domain that matches the heatmap id.
+**GET** /heatmap/id/*{heatmapId}* - returns one domain that matches the heatmap id.
 
 **GET** /heatmap/date/*{dateCreated}* - returns on heatmaps that matches the heatmap ID.
 
