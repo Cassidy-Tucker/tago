@@ -18,7 +18,7 @@ router.route('/heatmap')
     });
   });
 
-  router.route('/heatmap/:heatmap_id')
+  router.route('/heatmap/id/:heatmap_id')
     .get((req,res) => {
       Heatmap.findById(req.params.heatmap_id, (err, heatmap) => {
         if(err)

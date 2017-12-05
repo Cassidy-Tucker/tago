@@ -60157,7 +60157,7 @@ router.route('/heatmap').get((req, res) => {
   });
 });
 
-router.route('/heatmap/:heatmap_id').get((req, res) => {
+router.route('/heatmap/id/:heatmap_id').get((req, res) => {
   Heatmap.findById(req.params.heatmap_id, (err, heatmap) => {
     if (err) res.send(err);
 
@@ -60214,7 +60214,7 @@ router.route('/zone').get((req, res) => {
   });
 });
 
-router.route('/zone/:zone_id').get((req, res) => {
+router.route('/zone/id/:zone_id').get((req, res) => {
   Zone.findById(req.params.zone_id, (err, zone) => {
     if (err) res.send(err);
 

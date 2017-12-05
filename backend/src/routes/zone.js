@@ -18,7 +18,7 @@ router.route('/zone')
     });
   });
 
-  router.route('/zone/:zone_id')
+  router.route('/zone/id/:zone_id')
     .get((req,res) => {
       Zone.findById(req.params.zone_id, (err, zone) => {
         if(err)
