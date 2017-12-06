@@ -1,11 +1,13 @@
 const express = require ('express');
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 const app = express();
 
 const router = express.Router();
 
 const Domain = require('../models/domain');
 const Heatmap = require('../models/heatmap')
+const Zone = require('../models/zone')
 mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", {useMongoClient: true});
 
 router.route('/domain')
@@ -35,23 +37,52 @@ router.route('/domain/date/:domain_dateCreated')
   })
 })
 
-router.route('/domain/current')
+router.route('/domain/current/:interval')
 .get((req,res) => {
-  Domain.findOne().sort({"dateCreated": -1}).exec((err, domain)=> {
-    if(err){
-      console.error(err)
-    }
-    var sortHeatMaps = domain.heatmaps.sort((a,b)=>{
-      return a.dateCreated - b.dateCreated;
-    })
-   var result = sortHeatMaps.pop();
-   Heatmap.findById(result.id,(err,heatmap) => {
-     if(err)
-     console.error(err)
-     res.json(heatmap)
-    })
+  var promise = Domain.findOne().sort({"dateCreated": -1}).exec();
+
+  promise.then((domain) => {
+    console.log(domain)
   })
+  .then(domain => {
+    var promisto = Heatmap.findById(domain.id).exec();
+    promisto.then((heatmap) => {
+      console.log(heatmap)
+    })
+    .catch((err) => {
+      console.log('error:',err)
+    });
+  })
+
+  .catch((err) => {
+    console.log('error:',err)
+  });
+
+
+  //   var sortHeatMaps = domain.heatmaps.sort((a,b)=>{
+  //     return a.dateCreated - b.dateCreated;
+  //   })
+  //
+  //   var result = sortHeatMaps.pop();
+  //
+  //   if(domain.heatmaps.length == 0){
+  //     res.json({'error':"occured"})
+  //   }
+  //
+
+  //   var zoneArr = [];
+  //   for(var i = 0; i < domain.zones.length; i++){
+  //     Zone.findById(domain.zones[i].zoneId,(err,z)=>{
+  //       zoneArr.push(z);
+  //       if(i === domain.zones.length){
+  //         res.json(zoneArr)
+  //       }
+  //     });
+  //   }
+
+  //  res.json(domain);
 })
+
 
 router.route('/domain/query/:query_value')
 .get((req, res) => {
