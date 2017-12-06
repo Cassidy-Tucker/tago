@@ -1,0 +1,263 @@
+[
+{
+    "_id": "5a1f4d5774fece1f652effba",
+    "domain": "5a1f4d5674fece1f652effb9",
+    "name": "zone1",
+    "dateCreated": 1512026055000,
+    "intervals": [{
+        "activity": 0,
+        "dateCreated": 1512026060000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026065000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026070000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026075000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026080000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026085000,
+        "date": "testDate"
+      },
+      {
+        "activity": 9.527272727272727,
+        "dateCreated": 1512026090000,
+        "date": "testDate"
+      },
+      {
+        "activity": 56.05361781076066,
+        "dateCreated": 1512026095000,
+        "date": "testDate"
+      },
+      {
+        "activity": 49.34786641929499,
+        "dateCreated": 1512026100000,
+        "date": "testDate"
+      },
+      {
+        "activity": 49.17179962894249,
+        "dateCreated": 1512026105000,
+        "date": "testDate"
+      },
+      {
+        "activity": 51.877365491651204,
+        "dateCreated": 1512026110000,
+        "date": "testDate"
+      },
+      {
+        "activity": 62.08256029684601,
+        "dateCreated": 1512026115000,
+        "date": "testDate"
+      },
+      {
+        "activity": 41.16289424860853,
+        "dateCreated": 1512026120000,
+        "date": "testDate"
+      },
+      {
+        "activity": 28.225974025974025,
+        "dateCreated": 1512026125000,
+        "date": "testDate"
+      },
+      {
+        "activity": 20.401484230055658,
+        "dateCreated": 1512026130000,
+        "date": "testDate"
+      },
+      {
+        "activity": 16.61168831168831,
+        "dateCreated": 1512026135000,
+        "date": "testDate"
+      }
+    ]
+  },
+  {
+    "_id": "5a1f4d5774fece1f652effbb",
+    "domain": "5a1f4d5674fece1f652effb9",
+    "name": "zone2",
+    "dateCreated": 1512026055000,
+    "intervals": [{
+        "activity": 0,
+        "dateCreated": 1512026060000,
+        "date": "testDate"
+      },
+      {
+        "activity": 0,
+        "dateCreated": 1512026065000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026070000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026075000,
+        "date": "testDate"
+      },
+      {
+        "activity": 27.36472148541114,
+        "dateCreated": 1512026080000,
+        "date": "testDate"
+      },
+      {
+        "activity": 90.1143899204244,
+        "dateCreated": 1512026085000,
+        "date": "testDate"
+      },
+      {
+        "activity": 63.756299734748005,
+        "dateCreated": 1512026090000,
+        "date": "testDate"
+      },
+      {
+        "activity": 41.474137931034484,
+        "dateCreated": 1512026095000,
+        "date": "testDate"
+      },
+      {
+        "activity": 26.474469496021218,
+        "dateCreated": 1512026100000,
+        "date": "testDate"
+      },
+      {
+        "activity": 16.20159151193634,
+        "dateCreated": 1512026105000,
+        "date": "testDate"
+      },
+      {
+        "activity": 16,
+        "dateCreated": 1512026110000,
+        "date": "testDate"
+      },
+      {
+        "activity": 16,
+        "dateCreated": 1512026115000,
+        "date": "testDate"
+      },
+      {
+        "activity": 16.000663129973475,
+        "dateCreated": 1512026120000,
+        "date": "testDate"
+      },
+      {
+        "activity": 26.658488063660474,
+        "dateCreated": 1512026125000,
+        "date": "testDate"
+      },
+      {
+        "activity": 27.437002652519894,
+        "dateCreated": 1512026130000,
+        "date": "testDate"
+      },
+      {
+        "activity": 35.02254641909814,
+        "dateCreated": 1512026135000,
+        "date": "testDate"
+      }
+    ]
+  },
+  {
+    "_id": "5a1f4d5774fece1f652effbc",
+    "domain": "5a1f4d5674fece1f652effb9",
+    "name": "zone3",
+    "dateCreated": 1512026055000,
+    "intervals": [{
+        "activity": 0,
+        "dateCreated": 1512026060000,
+        "date": "testDate"
+      },
+      {
+        "activity": 0,
+        "dateCreated": 1512026065000,
+        "date": "testDate"
+      },
+      {
+        "activity": 0,
+        "dateCreated": 1512026070000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026075000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026080000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026085000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026090000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026095000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026100000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026105000,
+        "date": "testDate"
+      },
+      {
+        "activity": 8,
+        "dateCreated": 1512026110000,
+        "date": "testDate"
+      },
+      {
+        "activity": 15.602691511387164,
+        "dateCreated": 1512026115000,
+        "date": "testDate"
+      },
+      {
+        "activity": 64.81656314699794,
+        "dateCreated": 1512026120000,
+        "date": "testDate"
+      },
+      {
+        "activity": 60.005797101449275,
+        "dateCreated": 1512026125000,
+        "date": "testDate"
+      },
+      {
+        "activity": 38.554865424430645,
+        "dateCreated": 1512026130000,
+        "date": "testDate"
+      },
+      {
+        "activity": 44.38985507246377,
+        "dateCreated": 1512026135000,
+        "date": "testDate"
+      }
+    ]
+  }
+]

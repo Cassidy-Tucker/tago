@@ -18,7 +18,7 @@ router.route('/heatmap')
     });
   });
 
-  router.route('/heatmap/:heatmap_id')
+  router.route('/heatmap/id/:heatmap_id')
     .get((req,res) => {
       Heatmap.findById(req.params.heatmap_id, (err, heatmap) => {
         if(err)
@@ -34,7 +34,31 @@ router.route('/heatmap')
       if(err)
       res.send(err);
 
-      res.json(heatmpa);
+      res.json(heatmap);
     })
   })
+
+  router.route('/heatmap/query/:query_value')
+  .get((req, res) => {
+    const queryValue = req.params.query_value;
+    let query = {}
+
+    if(isNaN(Number(queryValue))) {
+      query = { $or : [
+        { domain : queryValue }
+      ]};
+    } else {
+      query = { $or : [
+        { dateCreated : Number(queryValue) }
+      ]};
+    }
+
+    Heatmap.find(query, (err, heatmap) => {
+      if(err)
+        console.log(err);
+
+      res.json(heatmap);
+    });
+  });
+
   module.exports = router;

@@ -14,43 +14,67 @@ router.route('/domain')
       if(err)
         res.send(err);
       res.json(domain)
-    })
   })
+})
 
-  router.route('/domain/id/:domain_id')
-    .get((req,res) => {
-      Domain.findById(req.params.domain_id, (err, domain) => {
-        if(err)
-        res.send(err);
-        res.json(domain);
-      })
-    })
-
-  router.route('/domain/date/:domain_dateCreated')
+router.route('/domain/id/:domain_id')
   .get((req,res) => {
-    Domain.findOne({'dateCreated' : req.params.domain_dateCreated}, (err, domain) => {
+    Domain.findById(req.params.domain_id, (err, domain) => {
       if(err)
       res.send(err);
-
       res.json(domain);
-    })
   })
+})
 
-  router.route('/domain/current')
-  .get((req,res) => {
-    Domain.findOne().sort({"dateCreated": -1}).exec((err, domain)=> {
-      if(err){
-        console.error(err)
-      }
-      var sortHeatMaps = domain.heatmaps.sort((a,b)=>{
-        return a.dateCreated - b.dateCreated;
-      })
-     var result = sortHeatMaps.pop();
-     Heatmap.findById(result.id,(err,heatmap) => {
-       if(err)
-       console.error(err)
-       res.json(heatmap)
-     })
+router.route('/domain/date/:domain_dateCreated')
+.get((req,res) => {
+  Domain.findOne({'dateCreated' : req.params.domain_dateCreated}, (err, domain) => {
+    if(err)
+    res.send(err);
+    res.json(domain);
+  })
+})
+
+router.route('/domain/current')
+.get((req,res) => {
+  Domain.findOne().sort({"dateCreated": -1}).exec((err, domain)=> {
+    if(err){
+      console.error(err)
+    }
+    var sortHeatMaps = domain.heatmaps.sort((a,b)=>{
+      return a.dateCreated - b.dateCreated;
+    })
+   var result = sortHeatMaps.pop();
+   Heatmap.findById(result.id,(err,heatmap) => {
+     if(err)
+     console.error(err)
+     res.json(heatmap)
     })
   })
-  module.exports = router;
+})
+
+router.route('/domain/query/:query_value')
+.get((req, res) => {
+  const queryValue = req.params.query_value;
+  let query = {}
+
+  if(isNaN(Number(queryValue))) {
+    query = { $or : [
+        { name : queryValue },
+        { description : { $regex : RegExp(queryValue) }}
+    ]};
+  } else {
+    query = { $or : [
+        { dateCreated : Number(queryValue) }
+    ]};
+  }
+
+  Domain.find(query, (err, domain) => {
+    if(err)
+      console.log(err);
+
+    res.json(domain);
+  });
+});
+
+module.exports = router;
