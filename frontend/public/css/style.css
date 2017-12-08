@@ -1078,19 +1078,6 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
   }
 }
 
-div.tooltip{
-  position: absolute;
-  text-align: center;
-  width: 60px;
-  height: 28px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none:
-}
-
 @media (max-width: 479px) {
   .button.tab {
     margin-bottom: 9px;
@@ -1104,5 +1091,31 @@ div.tooltip{
   }
   .grid-fours {
     width: 50%;
+  }
+}
+
+div.tooltip{
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none:
+}
+
+.legend {
+  padding: 5px;
+  font-size: 12px;
+  font-family: sans-serif;
+  background: lightsteelblue;
+  rect {
+    stroke-width: 2;
+  }
+  text {
+    fill: lightcyan;
   }
 }

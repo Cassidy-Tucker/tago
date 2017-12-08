@@ -26,12 +26,16 @@ var y1 = d3.scaleLinear().range([height, 0]);
 var legendRectSize = 18;
 var legendSpacing = 4;
 
-var svg = d3.select("#graph-container").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).style("background-color", "white").append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select("#graph-container")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .style("background-color", "white").append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
-    // .style("z-index", 1000000);
 
 $.getJSON("./data/sample.json", function(data, error) {
 
@@ -42,7 +46,7 @@ $.getJSON("./data/sample.json", function(data, error) {
     }).reduce(function(a, b) {
       return Math.max(a, b);
     });
-    //if the value that we get out of rhett is greater than the value we get out of max we want to set value to max
+
     if (rhett > graphElems.maxActivity) {
       graphElems.maxActivity = rhett;
     }
@@ -51,7 +55,6 @@ $.getJSON("./data/sample.json", function(data, error) {
 });
 
 $.getJSON("./data/sample.json", function(data, error) {
-  //var colors = ["cadetblue", "darkslateblue", "dimgray", "dodgerblue", "indigo", "black"];
 
   for (var i = 0; i < data.length; i++) {
     var intervals = data[i].intervals;
@@ -79,32 +82,29 @@ $.getJSON("./data/sample.json", function(data, error) {
         .style("stroke-width", 2.5)
         .attr("d", valueline);
 
-    console.log(valueline);
+     var legend = svg.selectAll('.legend')
+       .data([intervals])
+       .enter()
+       .append("g")
+       .attr("class", "legend")
+       .attr("transform", function(d, i) {
+         var height = legendRectSize + legendSpacing;
+         var offset = height * graphElems.colors[i].length / 2;
+         var horz = -2 * legendRectSize;
+         var vert = (i * height) - offset;
+         return "translate(" + horz + ", " + vert + ")";
+       });
 
-     // var legend = svg.selectAll('.legend')
-     //   .data([data[i]])
-     //   .enter()
-     //   .append("g")
-     //   .attr("class", "legend")
-     //   .attr("transform", function(d, i) {
-     //     var height = legendRectSize + legendSpacing;
-     //     var offset = height * graphElems.colors[i].length / 2;
-     //     var horz = -2 * legendRectSize;
-     //     var vert = i * height - offset;
-     //     return "translate(" + horz + ", " + vert + ")";
-     //   });
-     //
-     // legend.append("rect")
-     //   .attr("width", legendRectSize)
-     //   .attr("height", legendRectSize)
-     //   .style("fill", colors)
-     //   .style("stroke", colors);
-     //
-     // legend.append("text")
-     //   .attr("x", legendRectSize + legendSpacing)
-     //   .attr("y", legendRectSize - legendSpacing)
-     //   .text(function(d) {return d; });
+     legend.append("rect")
+       .attr("width", legendRectSize)
+       .attr("height", legendRectSize)
+       .style("fill", graphElems.colors[i])
+       .style("stroke", graphElems.colors[i]);
 
+     legend.append("text")
+       .attr("x", legendRectSize + legendSpacing)
+       .attr("y", legendRectSize - legendSpacing)
+       .text(function(d) {return d; });
 
      svg.selectAll("dot")
       .data(intervals)
@@ -120,14 +120,11 @@ $.getJSON("./data/sample.json", function(data, error) {
             div.html(Math.round(d.activity))
               .style("left", (d3.event.pageX) + "px")
               .style("top", (d3.event.pageY - 28) + "px");
-              console.log("mouseover");
           })
           .on("mouseout", function(d) {
             div.transition()
               .duration(500)
               .style("opacity", 0);
-              console.log("mouseout");
-              console.log(div);
           });
   }
 
