@@ -1,7 +1,7 @@
 var margin = {
     top: 50,
     right: 40,
-    bottom: 130,
+    bottom: 150,
     left: 60
   },
   width = 960 - margin.left - margin.right,
@@ -72,8 +72,6 @@ $.getJSON("./data/sample.json", function(data, error) {
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.activity); });
 
-    console.log([intervals]);
-
     svg.append("path")
         .data([intervals])
         .attr("class", "line")
@@ -81,30 +79,6 @@ $.getJSON("./data/sample.json", function(data, error) {
         .style("stroke", graphElems.colors[i])
         .style("stroke-width", 2.5)
         .attr("d", valueline);
-
-     var legend = svg.selectAll('.legend')
-       .data([intervals])
-       .enter()
-       .append("g")
-       .attr("class", "legend")
-       .attr("transform", function(d, i) {
-         var height = legendRectSize + legendSpacing;
-         var offset = height * graphElems.colors[i].length / 2;
-         var horz = -2 * legendRectSize;
-         var vert = (i * height) - offset;
-         return "translate(" + horz + ", " + vert + ")";
-       });
-
-     legend.append("rect")
-       .attr("width", legendRectSize)
-       .attr("height", legendRectSize)
-       .style("fill", graphElems.colors[i])
-       .style("stroke", graphElems.colors[i]);
-
-     legend.append("text")
-       .attr("x", legendRectSize + legendSpacing)
-       .attr("y", legendRectSize - legendSpacing)
-       .text(function(d) {return d; });
 
      svg.selectAll("dot")
       .data(intervals)
@@ -128,6 +102,46 @@ $.getJSON("./data/sample.json", function(data, error) {
           });
   }
 
+/******************************************************************************/
+
+// here we are creating our legend group, and positioning it.
+  var legend = svg.selectAll('.legend')
+    .data(data) //we pass in data, which consists of objects representing zones
+    .enter()
+    .append("g")
+    .attr("class", "legend")
+    .attr("background-color", "yellow")
+    .attr("transform", function(d, i) {
+      var height = legendRectSize + legendSpacing;
+      var offset = -380;
+      var horz = -2 * legendRectSize;
+      var vert = (i * height) - offset;
+      return "translate(" + horz + ", " + vert + ")";
+    });
+
+// now, we are inserting colored rectangles for each of our zones
+  legend.append("rect")
+    .attr("width", legendRectSize)
+    .attr("height", legendRectSize)
+    .style("fill", function(d,i){
+        //here we are using this function to LOOP through 'data'. This allows
+        //us to access the index 'i', and get the correct color for each zone.
+        return graphElems.colors[i];
+    })
+    .style("stroke", function(d,i){
+        //this works the same as above
+        return graphElems.colors[i];
+    });
+
+// now, we generate the text for our legend. Within the 'data' object, there is
+// a key value pair for 'name', which we are accessing below on 141
+  legend.append("text")
+    .attr("x", legendRectSize + legendSpacing)
+    .attr("y", legendRectSize - legendSpacing)
+    .text(function(d) {return d.name; });
+
+/******************************************************************************/
+
   svg.append("g")
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
@@ -140,7 +154,7 @@ $.getJSON("./data/sample.json", function(data, error) {
         .attr("transform", "rotate(-65)");
 
   svg.append("text")
-  .attr("transform",
+    .attr("transform",
         "translate(" + (width/2) + " ," +
                        (height + margin.top + 40) + ")")
       .attr("font-size", "20px")
@@ -167,6 +181,7 @@ $.getJSON("./data/sample.json", function(data, error) {
       .style("font-size", "24px")
       .style("text-decoration", "underline")
       .text("Activity vs. Time Graph");
+
 }).fail(function(d, textStatus, error){
   console.error("getJSON failed status: " + textStatus + " , error: " + error);
 });
