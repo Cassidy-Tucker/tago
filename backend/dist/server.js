@@ -10015,12 +10015,74 @@ module.exports = Logger;
 
 /***/ }),
 /* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Core module
+var core = __webpack_require__(2),
+  Instrumentation = __webpack_require__(329);
+
+// Set up the connect function
+var connect = __webpack_require__(164).connect;
+
+// Expose error class
+connect.MongoError = core.MongoError;
+
+// Actual driver classes exported
+connect.Admin = __webpack_require__(160);
+connect.MongoClient = __webpack_require__(164);
+connect.Db = __webpack_require__(110);
+connect.Collection = __webpack_require__(78);
+connect.Server = __webpack_require__(79);
+connect.ReplSet = __webpack_require__(166);
+connect.Mongos = __webpack_require__(165);
+connect.ReadPreference = __webpack_require__(20);
+connect.GridStore = __webpack_require__(163);
+connect.Chunk = __webpack_require__(162);
+connect.Logger = core.Logger;
+connect.Cursor = __webpack_require__(22);
+connect.GridFSBucket = __webpack_require__(331);
+// Exported to be used in tests not to be used anywhere else
+connect.CoreServer = __webpack_require__(2).Server;
+connect.CoreConnection = __webpack_require__(2).Connection;
+
+// BSON types exported
+connect.Binary = core.BSON.Binary;
+connect.Code = core.BSON.Code;
+connect.Map = core.BSON.Map;
+connect.DBRef = core.BSON.DBRef;
+connect.Double = core.BSON.Double;
+connect.Int32 = core.BSON.Int32;
+connect.Long = core.BSON.Long;
+connect.MinKey = core.BSON.MinKey;
+connect.MaxKey = core.BSON.MaxKey;
+connect.ObjectID = core.BSON.ObjectID;
+connect.ObjectId = core.BSON.ObjectID;
+connect.Symbol = core.BSON.Symbol;
+connect.Timestamp = core.BSON.Timestamp;
+connect.BSONRegExp = core.BSON.BSONRegExp;
+connect.Decimal128 = core.BSON.Decimal128;
+
+// Add connect method
+connect.connect = connect;
+
+// Set up the instrumentation method
+connect.instrument = function(options, callback) {
+  if(typeof options == 'function') callback = options, options = {};
+  return new Instrumentation(core, options, callback);
+}
+
+// Set our exports to be the connect function
+module.exports = connect;
+
+
+/***/ }),
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -10033,7 +10095,7 @@ module.exports = __webpack_require__(362);
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports) {
 
 // Copyright (c) 2008, Fair Oaks Labs, Inc.
@@ -10159,7 +10221,7 @@ exports.readIEEE754 = readIEEE754;
 exports.writeIEEE754 = writeIEEE754;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10469,68 +10531,6 @@ function parseExtendedQueryString(str) {
 function newObject() {
   return {};
 }
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Core module
-var core = __webpack_require__(2),
-  Instrumentation = __webpack_require__(329);
-
-// Set up the connect function
-var connect = __webpack_require__(164).connect;
-
-// Expose error class
-connect.MongoError = core.MongoError;
-
-// Actual driver classes exported
-connect.Admin = __webpack_require__(160);
-connect.MongoClient = __webpack_require__(164);
-connect.Db = __webpack_require__(110);
-connect.Collection = __webpack_require__(78);
-connect.Server = __webpack_require__(79);
-connect.ReplSet = __webpack_require__(166);
-connect.Mongos = __webpack_require__(165);
-connect.ReadPreference = __webpack_require__(20);
-connect.GridStore = __webpack_require__(163);
-connect.Chunk = __webpack_require__(162);
-connect.Logger = core.Logger;
-connect.Cursor = __webpack_require__(22);
-connect.GridFSBucket = __webpack_require__(331);
-// Exported to be used in tests not to be used anywhere else
-connect.CoreServer = __webpack_require__(2).Server;
-connect.CoreConnection = __webpack_require__(2).Connection;
-
-// BSON types exported
-connect.Binary = core.BSON.Binary;
-connect.Code = core.BSON.Code;
-connect.Map = core.BSON.Map;
-connect.DBRef = core.BSON.DBRef;
-connect.Double = core.BSON.Double;
-connect.Int32 = core.BSON.Int32;
-connect.Long = core.BSON.Long;
-connect.MinKey = core.BSON.MinKey;
-connect.MaxKey = core.BSON.MaxKey;
-connect.ObjectID = core.BSON.ObjectID;
-connect.ObjectId = core.BSON.ObjectID;
-connect.Symbol = core.BSON.Symbol;
-connect.Timestamp = core.BSON.Timestamp;
-connect.BSONRegExp = core.BSON.BSONRegExp;
-connect.Decimal128 = core.BSON.Decimal128;
-
-// Add connect method
-connect.connect = connect;
-
-// Set up the instrumentation method
-connect.instrument = function(options, callback) {
-  if(typeof options == 'function') callback = options, options = {};
-  return new Instrumentation(core, options, callback);
-}
-
-// Set our exports to be the connect function
-module.exports = connect;
 
 
 /***/ }),
@@ -26313,7 +26313,7 @@ function patchAssignSocket(res, callback) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var path = __webpack_require__(17),
-  fs = __webpack_require__(25),
+  fs = __webpack_require__(26),
   f = __webpack_require__(0).format,
   resolveFrom = __webpack_require__(412),
   semver = __webpack_require__(413);
@@ -41498,7 +41498,7 @@ var encodeUrl = __webpack_require__(68)
 var escapeHtml = __webpack_require__(69)
 var etag = __webpack_require__(143)
 var fresh = __webpack_require__(148)
-var fs = __webpack_require__(25)
+var fs = __webpack_require__(26)
 var mime = __webpack_require__(319)
 var ms = __webpack_require__(126)
 var onFinished = __webpack_require__(89)
@@ -42645,7 +42645,7 @@ module.exports = require("url");
 /* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const mongoose = __webpack_require__(26);
+const mongoose = __webpack_require__(27);
 const Schema = mongoose.Schema;
 
 const HeatmapSchema = new Schema({
@@ -42660,7 +42660,7 @@ module.exports = mongoose.model('Heatmap', HeatmapSchema);
 /* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const mongoose = __webpack_require__(26);
+const mongoose = __webpack_require__(27);
 const Schema = mongoose.Schema;
 
 const ZoneSchema = new Schema({
@@ -43570,7 +43570,7 @@ module.exports = etag
  */
 
 var crypto = __webpack_require__(32)
-var Stats = __webpack_require__(25).Stats
+var Stats = __webpack_require__(26).Stats
 
 /**
  * Module variables.
@@ -48312,7 +48312,7 @@ var Chunk = __webpack_require__(162),
   ReadPreference = __webpack_require__(20),
   Buffer = __webpack_require__(10).Buffer,
   Collection = __webpack_require__(78),
-  fs = __webpack_require__(25),
+  fs = __webpack_require__(26),
   f = __webpack_require__(0).format,
   util = __webpack_require__(0),
   Define = __webpack_require__(15),
@@ -54734,7 +54734,7 @@ var STATES = __webpack_require__(81);
 var MongooseError = __webpack_require__(5);
 var muri = __webpack_require__(400);
 var PromiseProvider = __webpack_require__(16);
-var mongodb = __webpack_require__(29);
+var mongodb = __webpack_require__(25);
 var util = __webpack_require__(0);
 
 /*!
@@ -60105,7 +60105,7 @@ function unpipe(stream) {
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(63);
-const mongoose = __webpack_require__(26);
+const mongoose = __webpack_require__(27);
 mongoose.Promise = __webpack_require__(137);
 const app = express();
 
@@ -60114,66 +60114,93 @@ const router = express.Router();
 const Domain = __webpack_require__(210);
 const Heatmap = __webpack_require__(135);
 const Zone = __webpack_require__(136);
-mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", {
-	useMongoClient: true
-});
+const MongoClient = __webpack_require__(25).MongoClient;
+const db = MongoClient.connect('mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago');
+
+var FindQuery = function (query) {
+	return db.then(function () {
+		return query;
+	}).then(function (data) {
+		return data.zones;
+	});
+};
+
+var ZonesQuery = function () {
+	return db.then(function () {
+		return Domain.findOne().sort({ dateCreated: -1 }).populate({
+			path: 'zones',
+			model: 'Zone',
+			populate: {
+				path: 'zones',
+				model: 'Zone'
+			}
+		});
+	}).then(data => {
+		return data;
+	});
+};
 
 router.route("/domain").get((req, res) => {
-	Domain.find((err, domain) => {
-		if (err) res.send(err);
-		res.json(domain);
+	var query = Domain.find({});
+	FindQuery(query).then(function (data) {
+		res.json(data);
+	}, function (err) {
+		console.error('The promise was rejected', err, err.stack);
 	});
 });
 
 router.route("/domain/id/:domain_id").get((req, res) => {
-	Domain.findById(req.params.domain_id, (err, domain) => {
-		if (err) res.send(err);
-		res.json(domain);
+	var query = Domain.findById(req.params.domain_id);
+	FindQuery(query).then(function (data) {
+		res.json(data);
+	}, function (err) {
+		console.error('The promise was rejected', err, err.stack);
 	});
 });
 
 router.route("/domain/date/:domain_dateCreated").get((req, res) => {
-	Domain.findOne({ dateCreated: req.params.domain_dateCreated }, (err, domain) => {
-		if (err) res.send(err);
-		res.json(domain);
+	var query = Domain.findOne({ dateCreated: req.params.domain_dateCreated });
+	FindQuery(query).then(function (data) {
+		res.json(data);
+	}, function (err) {
+		console.error('The promise was rejected', err, err.stack);
 	});
 });
-/* Would like to search by interval and get all the intervals of activity attched to the zones to then be pushed into a graph
-  x Basic route functionality
-  x Ajax Route button
-  x added access control allow headers, wild card
-  x return date from ajax call
-  Get the date, pass date into route and return date from route
-  starting from now get the interval that is now, that is whatever the interval
-*/
-router.route("/domain/current/:span").get((req, res) => {
-	/*
-   This is not ideal for scalability. We are retrieving the three most recent
-   zones, but this would not account for a situation with more or less zones
-   defined.
- */
-	var zonePromise = Zone.find().sort({ dateCreated: -1 }).limit(3).exec();
 
-	zonePromise.then(zone => {
-		// should return all intervals for the three most recent zones
-		var intervals_per_span = req.params.span / 5;
+router.route("/domain/currentZones/:interval").get((req, res) => {
+	ZonesQuery().then(function (data) {
+		function retSumOfIntervalForZone(zone, iterValue) {
+			let iterCount = iterValue / 5,
+			    intervals = zone.intervals,
+			    retArr = [];
 
-		for (var i = 0; i < zone.length; i++) {
-			var intervals_used = zone[i].intervals.length / intervals_per_span;
-			var interval_array = [];
+			for (var i = intervals.length - 1; i >= 0; i -= iterCount) {
+				filtInt = {
+					activity: 0,
+					dateCreated: intervals[i].dateCreated
+				};
 
-			for (var j = 0; j < intervals_used; j += intervals_per_span) {
-				var interval_sum = 0;
-				for (var k = j; k < intervals_per_span + j; k++) {
-					interval_sum += zone[i].intervals[k].activity;
+				let arr = intervals.slice(intervals.length - (1 + i), intervals.length - 1);
+
+				for (var j in arr) {
+					filtInt.activity += arr[j].activity / arr.length;
 				}
-				interval_array.push(interval_sum / intervals_per_span);
-			}
 
-			// console.log(zone[i].intervals);
-			console.log("Sum for " + zone[i].name + ": ", interval_array);
-			//return res.status(200).json(zone);
+				retArr.push(filtInt);
+			}
+			return retArr;
 		}
+
+		data.zones.forEach((zone, index) => {
+			zone.intervals = retSumOfIntervalForZone(zone, req.params.interval);
+		});
+
+		Heatmap.findOne().sort({ dateCreated: -1 }).then(heatmap => {
+			data.heatmaps = heatmap;
+			res.json(data);
+		});
+	}, function (err) {
+		console.error('The promise was rejected', err, err.stack);
 	});
 });
 
@@ -60216,7 +60243,7 @@ module.exports = router;
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(63);
-const mongoose = __webpack_require__(26);
+const mongoose = __webpack_require__(27);
 const app = express();
 
 const router = express.Router();
@@ -60273,7 +60300,7 @@ module.exports = router;
 /***/ (function(module, exports, __webpack_require__) {
 
 const express = __webpack_require__(63);
-const mongoose = __webpack_require__(26);
+const mongoose = __webpack_require__(27);
 const app = express();
 
 const router = express.Router();
@@ -60574,7 +60601,7 @@ function validMime (type) {
 /* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const mongoose = __webpack_require__(26);
+const mongoose = __webpack_require__(27);
 const Schema = mongoose.Schema;
 
 const DomainSchema = new Schema({
@@ -60594,7 +60621,7 @@ module.exports = mongoose.model('Domain', DomainSchema);
 const path = __webpack_require__(17);
 const express = __webpack_require__(63);
 const app = express();
-const mongoose = __webpack_require__(26);
+const mongoose = __webpack_require__(27);
 const DomainRouter = __webpack_require__(206);
 const ZoneRouter = __webpack_require__(208);
 const HeatmapRouter = __webpack_require__(207);
@@ -66605,8 +66632,8 @@ function typeChecker (type) {
 "use strict";
 
 
-var writeIEEE754 = __webpack_require__(27).writeIEEE754,
-	readIEEE754 = __webpack_require__(27).readIEEE754,
+var writeIEEE754 = __webpack_require__(28).writeIEEE754,
+	readIEEE754 = __webpack_require__(28).readIEEE754,
   Map = __webpack_require__(96),
 	Long = __webpack_require__(35),
   Double = __webpack_require__(46),
@@ -66970,8 +66997,8 @@ module.exports.Decimal128 = Decimal128;
 "use strict";
 
 
-var writeIEEE754 = __webpack_require__(27).writeIEEE754
-	, readIEEE754 = __webpack_require__(27).readIEEE754
+var writeIEEE754 = __webpack_require__(28).writeIEEE754
+	, readIEEE754 = __webpack_require__(28).readIEEE754
 	, Long = __webpack_require__(35).Long
   , Double = __webpack_require__(46).Double
   , Timestamp = __webpack_require__(52).Timestamp
@@ -67129,7 +67156,7 @@ module.exports = calculateObjectSize;
 "use strict";
 
 
-var readIEEE754 = __webpack_require__(27).readIEEE754,
+var readIEEE754 = __webpack_require__(28).readIEEE754,
 	f = __webpack_require__(0).format,
 	Long = __webpack_require__(35).Long,
   Double = __webpack_require__(46).Double,
@@ -67789,8 +67816,8 @@ module.exports = deserialize
 "use strict";
 
 
-var writeIEEE754 = __webpack_require__(27).writeIEEE754,
-  readIEEE754 = __webpack_require__(27).readIEEE754,
+var writeIEEE754 = __webpack_require__(28).writeIEEE754,
+  readIEEE754 = __webpack_require__(28).readIEEE754,
   Long = __webpack_require__(35).Long,
   Map = __webpack_require__(96),
   Double = __webpack_require__(46).Double,
@@ -69429,7 +69456,7 @@ function createWritableStdioStream (fd) {
       break;
 
     case 'FILE':
-      var fs = __webpack_require__(25);
+      var fs = __webpack_require__(26);
       stream = new fs.SyncWriteStream(fd, { autoClose: false });
       stream._type = 'fs';
       break;
@@ -69651,7 +69678,7 @@ function eventListenerCount (emitter, type) {
  * @private
  */
 
-var ReadStream = __webpack_require__(25).ReadStream
+var ReadStream = __webpack_require__(26).ReadStream
 var Stream = __webpack_require__(11)
 
 /**
@@ -69857,9 +69884,9 @@ var query = __webpack_require__(144);
 var debug = __webpack_require__(18)('express:application');
 var View = __webpack_require__(265);
 var http = __webpack_require__(93);
-var compileETag = __webpack_require__(28).compileETag;
-var compileQueryParser = __webpack_require__(28).compileQueryParser;
-var compileTrust = __webpack_require__(28).compileTrust;
+var compileETag = __webpack_require__(29).compileETag;
+var compileQueryParser = __webpack_require__(29).compileQueryParser;
+var compileTrust = __webpack_require__(29).compileTrust;
 var deprecate = __webpack_require__(21)('express');
 var flatten = __webpack_require__(64);
 var merge = __webpack_require__(92);
@@ -71202,15 +71229,15 @@ var deprecate = __webpack_require__(21)('express');
 var encodeUrl = __webpack_require__(68);
 var escapeHtml = __webpack_require__(69);
 var http = __webpack_require__(93);
-var isAbsolute = __webpack_require__(28).isAbsolute;
+var isAbsolute = __webpack_require__(29).isAbsolute;
 var onFinished = __webpack_require__(89);
 var path = __webpack_require__(17);
 var statuses = __webpack_require__(91)
 var merge = __webpack_require__(92);
 var sign = __webpack_require__(251).sign;
-var normalizeType = __webpack_require__(28).normalizeType;
-var normalizeTypes = __webpack_require__(28).normalizeTypes;
-var setCharset = __webpack_require__(28).setCharset;
+var normalizeType = __webpack_require__(29).normalizeType;
+var normalizeTypes = __webpack_require__(29).normalizeTypes;
+var setCharset = __webpack_require__(29).setCharset;
 var cookie = __webpack_require__(252);
 var send = __webpack_require__(131);
 var extname = path.extname;
@@ -72343,7 +72370,7 @@ function stringify (value, replacer, spaces, escape) {
 
 var debug = __webpack_require__(18)('express:view');
 var path = __webpack_require__(17);
-var fs = __webpack_require__(25);
+var fs = __webpack_require__(26);
 
 /**
  * Module variables.
@@ -78006,7 +78033,7 @@ module.exports = __webpack_require__(317)
 /***/ (function(module, exports, __webpack_require__) {
 
 var path = __webpack_require__(17);
-var fs = __webpack_require__(25);
+var fs = __webpack_require__(26);
 
 function Mime() {
   // Map of extension -> mime type
@@ -88319,7 +88346,7 @@ module.exports = exports = ObjectId;
  * Module dependencies.
  */
 
-var mongodb = __webpack_require__(29);
+var mongodb = __webpack_require__(25);
 var ReadPref = mongodb.ReadPreference;
 
 /*!
@@ -88371,7 +88398,7 @@ module.exports = function readPref(pref, tags) {
  * Module dependencies.
  */
 
-var Binary = __webpack_require__(29).Binary;
+var Binary = __webpack_require__(25).Binary;
 
 module.exports = exports = Binary;
 
@@ -88385,7 +88412,7 @@ module.exports = exports = Binary;
  */
 
 var MongooseCollection = __webpack_require__(172);
-var Collection = __webpack_require__(29).Collection;
+var Collection = __webpack_require__(25).Collection;
 var utils = __webpack_require__(3);
 
 /**
@@ -88662,7 +88689,7 @@ module.exports = NativeCollection;
  */
 
 var MongooseConnection = __webpack_require__(173);
-var mongo = __webpack_require__(29);
+var mongo = __webpack_require__(25);
 var Db = mongo.Db;
 var Server = mongo.Server;
 var Mongos = mongo.Mongos;
@@ -89086,7 +89113,7 @@ exports.ReadPreference = __webpack_require__(346);
  * @see ObjectId
  */
 
-var ObjectId = __webpack_require__(29).ObjectId;
+var ObjectId = __webpack_require__(25).ObjectId;
 
 /*!
  * ignore
@@ -90380,7 +90407,7 @@ Mongoose.prototype.CastError = __webpack_require__(57);
  * @api public
  */
 
-Mongoose.prototype.mongo = __webpack_require__(29);
+Mongoose.prototype.mongo = __webpack_require__(25);
 
 /**
  * The [mquery](https://github.com/aheckmann/mquery) query builder Mongoose uses.

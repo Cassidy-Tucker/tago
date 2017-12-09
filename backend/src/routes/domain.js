@@ -8,73 +8,98 @@ const router = express.Router();
 const Domain = require("../models/domain");
 const Heatmap = require("../models/heatmap");
 const Zone = require("../models/zone");
-mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", {
-	useMongoClient: true
-});
+const MongoClient = require('mongodb').MongoClient;
+const db = MongoClient.connect('mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago');
+
+var FindQuery = function(query) {
+  return db.then(function() {
+    return query;
+  }).then(function(data) {
+    return data.zones;
+  });
+};
+
+var ZonesQuery = function() {
+  return db.then(function() {
+    return Domain.findOne().sort({ dateCreated: -1 }).populate({
+	    path: 'zones',
+	    model: 'Zone',
+	    populate: {
+	      path: 'zones',
+	      model: 'Zone'
+	    }
+	  });
+  }).then((data) => {
+		return data;
+	})
+};
 
 router.route("/domain").get((req, res) => {
-	Domain.find((err, domain) => {
-		if (err) res.send(err);
-		res.json(domain);
+	var query = Domain.find({});
+	FindQuery(query).then(function(data) {
+	  res.json(data);
+	}, function(err) {
+	  console.error('The promise was rejected', err, err.stack);
 	});
 });
 
 router.route("/domain/id/:domain_id").get((req, res) => {
-	Domain.findById(req.params.domain_id, (err, domain) => {
-		if (err) res.send(err);
-		res.json(domain);
+	var query = Domain.findById(req.params.domain_id);
+	FindQuery(query).then(function(data) {
+	  res.json(data);
+	}, function(err) {
+	  console.error('The promise was rejected', err, err.stack);
 	});
 });
 
 router.route("/domain/date/:domain_dateCreated").get((req, res) => {
-	Domain.findOne(
-		{ dateCreated: req.params.domain_dateCreated },
-		(err, domain) => {
-			if (err) res.send(err);
-			res.json(domain);
-		}
-	);
+	var query = Domain.findOne({ dateCreated: req.params.domain_dateCreated });
+	FindQuery(query).then(function(data) {
+	  res.json(data);
+	}, function(err) {
+	  console.error('The promise was rejected', err, err.stack);
+	});
 });
-/* Would like to search by interval and get all the intervals of activity attched to the zones to then be pushed into a graph
-  x Basic route functionality
-  x Ajax Route button
-  x added access control allow headers, wild card
-  x return date from ajax call
-  Get the date, pass date into route and return date from route
-  starting from now get the interval that is now, that is whatever the interval
-*/
-router.route("/domain/current/:span").get((req, res) => {
-  /*
-    This is not ideal for scalability. We are retrieving the three most recent
-    zones, but this would not account for a situation with more or less zones
-    defined.
-  */
-  var zonePromise = Zone.find()
-		.sort({ dateCreated: -1 })
-    .limit(3)
-		.exec();
 
-  zonePromise.then((zone) => {
-    // should return all intervals for the three most recent zones
-    var intervals_per_span = req.params.span / 5;
+router.route("/domain/currentZones/:interval").get((req, res) => {
+	ZonesQuery().then(function(data) {
+		function retSumOfIntervalForZone(zone, iterValue) {
+			let iterCount = iterValue/5,
+			    intervals = zone.intervals,
+					retArr = [];
 
-    for(var i = 0; i < zone.length; i++){
-      var intervals_used = zone[i].intervals.length / intervals_per_span;
-      var interval_array = [];
+		  for (var i = intervals.length - 1; i >= 0; i -= iterCount) {
+				filtInt = {
+					activity : 0,
+				  dateCreated: intervals[i].dateCreated
+			  };
 
-      for(var j = 0; j < intervals_used; j += intervals_per_span){
-        var interval_sum   = 0;
-        for(var k = j; k < (intervals_per_span + j); k++){
-          interval_sum += zone[i].intervals[k].activity;
-        }
-        interval_array.push(interval_sum / intervals_per_span);
-      }
+				let arr = intervals.slice(
+					intervals.length - (1 + i),
+					intervals.length -1
+				);
 
-      // console.log(zone[i].intervals);
-         console.log("Sum for "+zone[i].name+": ", interval_array);
-      //return res.status(200).json(zone);
-    }
-  });
+				for(var j in arr) {
+					filtInt.activity += arr[j].activity / arr.length;
+				}
+
+			 retArr.push(filtInt);
+			}
+			return retArr;
+		}
+
+		data.zones.forEach((zone, index) => {
+			zone.intervals = retSumOfIntervalForZone(zone, req.params.interval);
+		});
+
+		Heatmap.findOne().sort({ dateCreated: -1 }).then((heatmap) => {
+			data.heatmaps = heatmap;
+			res.json(data);
+		});
+
+	}, function(err) {
+		console.error('The promise was rejected', err, err.stack);
+	});
 });
 
 /*********************************************
