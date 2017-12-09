@@ -69,7 +69,7 @@ p {
 }
 
 a {
-  color: #2196f3;
+  color: #f9fbe7;
   text-decoration: none;
 }
 
@@ -108,162 +108,15 @@ figcaption {
   text-align: center;
 }
 
-.button {
-  display: inline-block;
-  padding: 11px 20px;
-  border-radius: 3px;
-  background-color: #2196f3;
-  -webkit-transition: background-color 150ms ease;
-  transition: background-color 150ms ease;
-  color: #fff;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  text-decoration: none;
-}
-
-.button:hover {
-  background-color: #1565c0;
-}
-
-.button.w--current {
-  background-color: #2e80b6;
-}
-
-.button.white {
-  background-color: #fff;
-  color: #333;
-}
-
-.button.white:hover {
-  background-color: hsla(0, 0%, 100%, .77);
-}
-
-.button.black {
-  background-color: #333;
-}
-
-.button.black:hover {
-  background-color: #000;
-}
-
-.button.black.with-field {
-  width: 22%;
-  margin-left: 2%;
-  float: left;
-}
-
-.button.full-width {
-  display: block;
-  width: 100%;
-  background-color: #ac9653;
-}
-
-.button.small {
-  padding: 7px 12px;
-  background-color: #2196f3;
-  font-size: 11px;
-  line-height: 14px;
-  text-transform: uppercase;
-}
-
-.button.small:hover {
-  background-color: #1565c0;
-}
-
-.button.tab {
-  margin-right: 8px;
-  margin-left: 8px;
-  background-color: #a8a8a8;
-}
-
-.button.tab:hover {
-  background-color: #7e7e7e;
-}
-
-.button.tab.w--current {
-  background-color: #2196f3;
-}
-
-.button.tab.w--current:hover {
-  background-color: #1565c0;
-}
-
-.button.with-field {
-  width: 22%;
-  margin-left: 2%;
-  float: left;
-}
-
-.navigation-bar {
-  background-color: #fff;
-}
-
-.navigation-bar.dark {
-  background-color: #5d5d5d;
-}
-
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 60px;
-}
-
-.brand-text {
-  margin-top: 16px;
-  margin-bottom: 0px;
-  font-size: 23px;
-  line-height: 26px;
-  font-weight: 400;
-}
-
-.brand-link {
-  height: 60px;
-  -webkit-transition: opacity 200ms ease;
-  transition: opacity 200ms ease;
-}
-
-.brand-link:hover {
-  opacity: 0.66;
-}
-
-.brand-link.right {
-  float: right;
-}
-
-.brand-link.on-top {
-  display: block;
-  float: none;
-  text-align: center;
-}
-
-.brand-link.white {
-  color: #fff;
-}
-
-.brand-link.left-spacing {
-  margin-left: 15px;
-  color: #fff;
-}
-
-.brand-link.left {
-  margin-left: 16px;
-}
-
 .section {
-  position: relative;
+  position: center;
   padding-top: 50px;
   padding-bottom: 50px;
   background-color: #fff;
   background-image: -webkit-linear-gradient(53deg, #000, #fff);
   background-image: linear-gradient(37deg, #000, #fff);
   font-family: Lato, sans-serif;
-  color: #5477af;
+  color: #f9fbe7;
 }
 
 .section.centered {
@@ -284,17 +137,6 @@ figcaption {
 .hero-slider {
   height: 455px;
   background-color: transparent;
-}
-
-.slide {
-  padding-top: 82px;
-  padding-right: 85px;
-  padding-left: 85px;
-  background-color: #dbdbdb;
-}
-
-.slide.two {
-  background-color: #dbdbdb;
 }
 
 .header-section {
@@ -491,10 +333,6 @@ figcaption {
   background-color: #29a9e8;
 }
 
-.social-button.instagram {
-  background-color: #4b769b;
-}
-
 .social-icon-link {
   padding: 3px;
   opacity: 1;
@@ -504,11 +342,6 @@ figcaption {
 
 .social-icon-link:hover {
   opacity: 0.5;
-}
-
-.profile-image {
-  margin-bottom: 15px;
-  border-radius: 100px;
 }
 
 .hero-with-nav {
@@ -832,24 +665,8 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
 }
 
 @media (max-width: 991px) {
-  .hamburger-button:hover {
-    color: #2196f3;
-  }
-  .hamburger-button.w--open {
-    background-color: #333;
-  }
-  .hamburger-button.left {
-    float: left;
-  }
-  .hamburger-button.white {
-    color: #fff;
-  }
   .hero-slider {
     height: 400px;
-  }
-  .form-wrapper.squeezed {
-    padding-right: 10%;
-    padding-left: 10%;
   }
   .left-navigation {
     width: 100%;
@@ -884,12 +701,6 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
 }
 
 @media (max-width: 767px) {
-  .brand-link.on-top {
-    float: left;
-  }
-  .brand-link.left-spacing {
-    padding-left: 0px;
-  }
   .section {
     padding-right: 20px;
     padding-left: 20px;
@@ -908,10 +719,6 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
   }
   .cta-heading {
     margin-bottom: 10px;
-  }
-  .form-wrapper.squeezed {
-    padding-right: 9px;
-    padding-left: 0px;
   }
   .picture-border {
     margin-bottom: 13px;
@@ -944,19 +751,6 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
   }
 }
 
-div.tooltip{
-  position: absolute;
-  text-align: center;
-  width: 60px;
-  height: 28px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none:
-}
-
 @media (max-width: 479px) {
   .button.tab {
     margin-bottom: 9px;
@@ -970,5 +764,31 @@ div.tooltip{
   }
   .grid-fours {
     width: 50%;
+  }
+}
+
+div.tooltip{
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none:
+}
+
+.legend {
+  padding: 5px;
+  font-size: 12px;
+  font-family: sans-serif;
+  background: lightsteelblue;
+  rect {
+    stroke-width: 2;
+  }
+  text {
+    fill: lightcyan;
   }
 }
