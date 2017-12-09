@@ -4,8 +4,7 @@ $( function() {
 			showOtherMonths: true,
 			dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 		});
-  } );
-
+  });
 
 var testData = [{
 	"_id" : "5a1e195a74fece094b601928",
