@@ -35,19 +35,44 @@ router.route("/domain/date/:domain_dateCreated").get((req, res) => {
 		}
 	);
 });
+/* Would like to search by interval and get all the intervals of activity attched to the zones to then be pushed into a graph
+  x Basic route functionality
+  x Ajax Route button
+  x added access control allow headers, wild card
+  x return date from ajax call
+  Get the date, pass date into route and return date from route
+  starting from now get the interval that is now, that is whatever the interval
+*/
+router.route("/domain/current/:interval").get((req, res) => {
+	var promise = Domain.findOne()
+		.sort({ dateCreated: -1 })
+		.exec();
 
-router.route("/domain/current/:date").get((req, res) => {
-  /* Would like to search by date and get all zones with all intervals actached to the zones to then be pushed into a graph
-    x Basic route functionality
-    Get the date, pass date into route and return date from route
-  */
-    res.json("This worked!!")
+  promise.then((domain) => {
+    domain.zones.map((zone) => {
+      Zone.findById(zone.id,(err, z) =>{
+        var int =  z.intervals.filter((i,v)=>{
+            return v.dateCreated = new Date().getTime();
+        })
+        res.json(int)
+      })
+    })
+  })
+});
+      //
+      // res.json({
+      //   'interval': req.params.interval,
+      //   'domain': promise
 
-
-
-	// var promise = Domain.findOne()
-	// 	.sort({ dateCreated: -1 })
-	// 	.exec();
+    // var zoneArr = [];
+    // for (var i = 0; i < domain.zones.length; i++) {
+    //   Zone.findById(domain.zones[i].zoneId, (err, z) => {
+    //     zoneArr.push(z);
+    //     if (i === domain.zones.length) {
+    //       res.json(zoneArr);
+    //     }
+    //   });
+    // }
 	// promise
 	// 	.then(domain => {
 	// 		console.log(domain);
@@ -83,17 +108,9 @@ router.route("/domain/current/:date").get((req, res) => {
   //     .catch((err) => {
   //       console.log("error",err);
   //     });
-// 	var zoneArr = [];
-// 	for (var i = 0; i < domain.zones.length; i++) {
-// 		Zone.findById(domain.zones[i].zoneId, (err, z) => {
-// 			zoneArr.push(z);
-// 			if (i === domain.zones.length) {
-// 				res.json(zoneArr);
-// 			}
-// 		});
-// 	}
+
 // 	res.json(domain);
- });
+
 
 router.route("/domain/query/:query_value").get((req, res) => {
 	const queryValue = req.params.query_value;
