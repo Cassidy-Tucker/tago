@@ -195,20 +195,6 @@ figcaption {
   float: left;
 }
 
-.navigation-link {
-  height: 60px;
-  padding-top: 18px;
-  padding-bottom: 18px;
-}
-
-.navigation-link:hover {
-  color: #2196f3;
-}
-
-.navigation-link.white {
-  color: #fff;
-}
-
 .navigation-bar {
   background-color: #fff;
 }
@@ -217,20 +203,15 @@ figcaption {
   background-color: #5d5d5d;
 }
 
-.navigation-bar.top {
-  margin-top: 58px;
-  margin-bottom: 124px;
-  border-radius: 5px;
-  background-color: #fff;
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
 }
-
-.navigation-menu.left {
-  float: left;
-}
-
-.navigation-menu.on-bottom {
-  float: none;
-  text-align: center;
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
 }
 
 .brand-text {
@@ -457,12 +438,6 @@ figcaption {
   background-color: #fff;
 }
 
-.form-label {
-  margin-bottom: 6px;
-  font-size: 13px;
-  text-transform: uppercase;
-}
-
 .section-subheading.center {
   font-size: 20px;
   text-align: center;
@@ -474,38 +449,6 @@ figcaption {
 
 .section-title-group.centered {
   text-align: center;
-}
-
-.form-field {
-  min-height: 41px;
-  margin-right: 1px;
-  margin-bottom: 17px;
-  border-style: none;
-  border-radius: 3px;
-  background-color: #a8a8a8;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .09);
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-}
-
-.form-field:focus {
-  box-shadow: 0 0 0 2px #2196f3;
-}
-
-.form-field.text-area {
-  min-height: 110px;
-  background-color: #a8a8a8;
-}
-
-.form-field.with-button {
-  width: 75%;
-  margin-bottom: 0px;
-  float: left;
-}
-
-.form-wrapper.squeezed {
-  padding-right: 19%;
-  padding-left: 19%;
 }
 
 .picture-border {
@@ -548,44 +491,8 @@ figcaption {
   background-color: #29a9e8;
 }
 
-.social-button.red {
-  background-color: #d11529;
-}
-
-.social-button.pink {
-  background-color: #fc488f;
-}
-
-.social-button.pink2 {
-  background-color: #ed1081;
-}
-
-.social-button.orange {
-  background-color: #db4e34;
-}
-
-.social-button.vimeo {
-  background-color: #1ebae7;
-}
-
-.social-button.linkdin {
-  background-color: #1485c3;
-}
-
 .social-button.instagram {
   background-color: #4b769b;
-}
-
-.social-button.tumblr {
-  background-color: #2e5270;
-}
-
-.social-button.webflow {
-  background-color: #3278bd;
-}
-
-.social-button.medium {
-  background-color: #549f63;
 }
 
 .social-icon-link {
@@ -814,47 +721,6 @@ figcaption {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  text-align: center;
-}
-
-.utility-page-form {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-}
-
-.success-wrapper {
-  padding: 31px;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: #fff;
-}
-
-.success-message {
-  margin-bottom: 0px;
-}
-
-.error-wrapper {
-  border-radius: 5px;
-  background-color: #d32f2f;
-  color: #fff;
-}
-
-.error-message {
-  margin-bottom: 0px;
-}
-
-.social-link-wrapper {
   text-align: center;
 }
 

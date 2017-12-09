@@ -18,7 +18,7 @@ router.route('/zone')
     });
   });
 
-  router.route('/zone/:zone_id')
+  router.route('/zone/id/:zone_id')
     .get((req,res) => {
       Zone.findById(req.params.zone_id, (err, zone) => {
         if(err)
@@ -40,11 +40,19 @@ router.route('/zone')
 
   router.route('/zone/query/:query_value')
   .get((req, res) => {
-    let queryValue = req.params.query_value;
-    let query = { $or : [
-      { name : queryValue },
-      { dateCreated : queryValue }
-    ]};
+    const queryValue = req.params.query_value;
+    let query = {}
+
+    if(isNaN(Number(queryValue))) {
+      query = { $or : [
+        { name : queryValue }
+      ]};
+    } else {
+      query = { $or : [
+        { dateCreated : Number(queryValue) }
+      ]};
+    }
+
 
     Zone.find(query, (err, zone) => {
       if(err)
