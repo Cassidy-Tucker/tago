@@ -19,7 +19,7 @@ var graphElems = {
   intervals: [],
   maxActivity: 0
 }
-
+console.log("hello!!!!!!!!!!!!Are you working!??!?!?!?")
 var x = d3.scaleTime().range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
 var y1 = d3.scaleLinear().range([height, 0]);
@@ -37,25 +37,31 @@ var div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-$.getJSON("./data/sample.json", function(data, error) {
+$.ajax({
+  type:'GET',
+  contentType:'application/json; charset=utf-8',
+  url:'http://localhost:3001/api/domain/current/10',
+  dataType:"json",
+  success: function(data, error) {
+    console.log("this is data:", data);
+    var max = 0;
+    for (var i = 0; i < data.length; i++) {
+      var rhett = data[i].intervals.map(function(v, i) {
+        return Number(v.activity);
+      }).reduce(function(a, b) {
+        return Math.max(a, b);
+      });
 
-  var max = 0;
-  for (var i = 0; i < data.length; i++) {
-    var rhett = data[i].intervals.map(function(v, i) {
-      return Number(v.activity);
-    }).reduce(function(a, b) {
-      return Math.max(a, b);
-    });
-
-    if (rhett > graphElems.maxActivity) {
-      graphElems.maxActivity = rhett;
+      if (rhett > graphElems.maxActivity) {
+        graphElems.maxActivity = rhett;
+      }
     }
+    graphElems.maxActivity = Math.round(graphElems.maxActivity);
   }
-  graphElems.maxActivity = Math.round(graphElems.maxActivity);
 });
 
-$.getJSON("./data/sample.json", function(data, error) {
-
+d3.request("http://localhost:3001/api/domain/current/:span", function(error, response) {
+  console.log("this is the data:", response);
   for (var i = 0; i < data.length; i++) {
     var intervals = data[i].intervals;
     intervals.map(function(d) {
@@ -182,6 +188,4 @@ $.getJSON("./data/sample.json", function(data, error) {
       .style("text-decoration", "underline")
       .text("Activity vs. Time Graph");
 
-}).fail(function(d, textStatus, error){
-  console.error("getJSON failed status: " + textStatus + " , error: " + error);
-});
+})
