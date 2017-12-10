@@ -69,6 +69,13 @@ $(function() {
     setMaxActivity(domain);
 
     for (var i = 0; i < domain.zones.length; i++) {
+      if(domain.zones[i].intervals.length > 30) {
+        domain.zones[i].intervals = domain.zones[i].intervals.splice(
+          domain.zones[i].intervals.length-30,
+          domain.zones[i].intervals.length-1
+        )
+      }
+
       domain.zones[i].intervals.map(function(d) {
         var dc = new Date(d.dateCreated);
 
