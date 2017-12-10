@@ -199,9 +199,7 @@ $(function() {
       .style("text-decoration", "underline")
       .text("Activity vs. Time Graph");
   }
-
-  console.log(graphElems);
-
+  
   $.ajax({
     type:'GET',
     contentType:'application/json; charset=utf-8',
