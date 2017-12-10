@@ -8,6 +8,19 @@ $(function() {
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
+    function parseData(dada){
+       var currentTime = moment.unix(dada.dateCreated/1000).format('MMMM Do YYYY, h:mm:ss a');
+    		var image = new Image( ) ;
+    		var prefix = "data:image/png;base64,"
+    		var completedString = prefix.concat(dada.image)
+    		image.src= completedString;
+
+    		if ( $('#heat-map').children().length >= 1 ) {
+    		     $('#heat-map').children().remove()
+    		}
+    		document.getElementById('heat-map').appendChild(image);
+    }
+
   var graphElems = {
     colors: [
       "cadetblue",
@@ -45,6 +58,8 @@ $(function() {
     dataType:"json",
     success: function(domain, error) {
       console.log(domain);
+      var heatmap = domain.heatmaps.pop();
+      parseData(heatmap);
       var max = 0;
 
       for (var i = 0; i < domain.zones.length; i++) {
