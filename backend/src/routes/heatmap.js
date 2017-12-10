@@ -18,27 +18,27 @@ router.route('/heatmap')
     });
   });
 
-  router.route('/heatmap/id/:heatmap_id')
-    .get((req,res) => {
-      Heatmap.findById(req.params.heatmap_id, (err, heatmap) => {
-        if(err)
-        res.send(err);
+router.route('/heatmap/id/:heatmap_id')
+  .get((req,res) => {
+    Heatmap.findById(req.params.heatmap_id, (err, heatmap) => {
+      if(err)
+      res.send(err);
 
-        res.json(heatmap);
-      })
+      res.json(heatmap);
     })
+  });
 
-  router.route('/heatmap/date/:heatmap_dateCreated')
+router.route('/heatmap/date/:heatmap_dateCreated')
   .get((req,res) => {
     Heatmap.findOne({'dateCreated' : req.params.heatmap_dateCreated}, (err, heatmap) => {
       if(err)
       res.send(err);
 
       res.json(heatmap);
-    })
-  })
+    });
+  });
 
-  router.route('/heatmap/query/:query_value')
+router.route('/heatmap/query/:query_value')
   .get((req, res) => {
     const queryValue = req.params.query_value;
     let query = {}
