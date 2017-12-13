@@ -199,15 +199,14 @@ $(function() {
       .style("text-decoration", "underline")
       .text("Activity vs. Time Graph");
   }
-  
+
   $.ajax({
     type:'GET',
     contentType:'application/json; charset=utf-8',
     url:'http://localhost:3001/api/domain/currentZones/60',
     dataType:"json",
     success: function(domain, error) {
-      if(error != 'success')
-        console.log(error)
+      if (error != 'success') console.log(error);
 
       var heatmap = domain.heatmaps.pop();
       parseData(heatmap);
