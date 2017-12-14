@@ -124,9 +124,8 @@ $(function() {
           });
     }
 
-    // here we are creating our legend group, and positioning it.
     var legend = svg.selectAll('.legend')
-        .data(graphElems.zones) //we pass in data, which consists of objects representing zones
+        .data(graphElems.zones) 
       .enter().append("g")
         .attr("class", "legend")
         .attr("background-color", "yellow")
@@ -138,13 +137,11 @@ $(function() {
           return "translate(" + horz + ", " + vert + ")";
         });
 
-    // now, we are inserting colored rectangles for each of our zones
     legend.append("rect")
       .attr("width", legendRectSize)
       .attr("height", legendRectSize)
       .style("fill", function(d,i){
-      // here we are using this function to LOOP through 'data'. This allows
-      // us to access the index 'i', and get the correct color for each zone.
+     
       return graphElems.colors[i];
       })
       .style("stroke", function(d,i){
@@ -152,8 +149,6 @@ $(function() {
         return graphElems.colors[i];
       });
 
-    // now, we generate the text for our legend. Within the 'data' object, there is
-    // a key value pair for 'name', which we are accessing below on 141
     legend.append("text")
       .attr("x", legendRectSize + legendSpacing)
       .attr("y", legendRectSize - legendSpacing)
