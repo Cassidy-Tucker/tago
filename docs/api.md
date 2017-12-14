@@ -20,6 +20,9 @@
 
 **GET** /domain/query/*{queryValue}* - Return all domains that match the queryValue. Queries the name and description.
 
+**GET** /domain/currentZone/*{interval}* - Returns the most recent heat map and
+zone activity.
+
 ### Zone
 
 **GET** /zone - Returns all zones in the database

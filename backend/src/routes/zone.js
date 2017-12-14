@@ -18,27 +18,27 @@ router.route('/zone')
     });
   });
 
-  router.route('/zone/id/:zone_id')
-    .get((req,res) => {
-      Zone.findById(req.params.zone_id, (err, zone) => {
-        if(err)
+router.route('/zone/id/:zone_id')
+  .get((req,res) => {
+    Zone.findById(req.params.zone_id, (err, zone) => {
+      if(err)
         res.send(err);
 
-        res.json(zone);
-      })
-    })
+      res.json(zone);
+    });
+  });
 
-  router.route('/zone/date/:zone_dateCreated')
+router.route('/zone/date/:zone_dateCreated')
   .get((req,res) => {
     Zone.findOne({'dateCreated' : req.params.zone_dateCreated}, (err, zone) => {
       if(err)
-      res.send(err);
+        res.send(err);
 
       res.json(zone);
-    })
-  })
+    });
+  });
 
-  router.route('/zone/query/:query_value')
+router.route('/zone/query/:query_value')
   .get((req, res) => {
     const queryValue = req.params.query_value;
     let query = {}
@@ -53,13 +53,12 @@ router.route('/zone')
       ]};
     }
 
-
     Zone.find(query, (err, zone) => {
       if(err)
         console.log(err);
 
-        res.json(zone);
+      res.json(zone);
     });
   });
 
-    module.exports = router;
+module.exports = router;

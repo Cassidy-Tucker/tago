@@ -659,33 +659,40 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
   .hero-slider {
     height: 400px;
   }
+
   .left-navigation {
     width: 100%;
     height: auto;
     float: none;
   }
+
   .nav-link {
     padding-top: 15px;
     padding-bottom: 15px;
     color: #fff;
   }
+
   .nav-menu {
     padding: 17px;
     background-color: #333;
   }
+
   .logo-link {
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 10px;
     float: left;
   }
+
   .content {
     width: 100%;
     height: auto;
   }
+
   .social-footer {
     margin-top: 0px;
   }
+
   .content-column {
     padding-top: 0px;
   }
@@ -696,46 +703,58 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
     padding-right: 20px;
     padding-left: 20px;
   }
+
   .hero-slider {
     height: 528px;
   }
+
   .slide {
     padding-top: 30px;
     padding-bottom: 30px;
   }
+
   .cta-section {
     padding-right: 20px;
     padding-left: 20px;
     text-align: center;
   }
+
   .cta-heading {
     margin-bottom: 10px;
   }
+
   .picture-border {
     margin-bottom: 13px;
   }
+
   .footer {
     padding-right: 20px;
     padding-left: 20px;
   }
+
   .grid-fours {
     width: 33.33%;
   }
+
   .image-column {
     margin-bottom: 10px;
   }
+
   .content-column {
     margin-bottom: 13px;
     text-align: center;
   }
+
   .container {
     padding-right: 20px;
     padding-left: 20px;
   }
+
   .waterfall-content-column {
     padding-top: 0px;
     text-align: center;
   }
+
   .waterfall-image-column {
     padding-top: 21px;
     padding-bottom: 21px;
@@ -746,13 +765,16 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
   .button.tab {
     margin-bottom: 9px;
   }
+
   .hero-slider {
     height: 550px;
   }
+
   .slide {
     padding-right: 53px;
     padding-left: 53px;
   }
+
   .grid-fours {
     width: 50%;
   }

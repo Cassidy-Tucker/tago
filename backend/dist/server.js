@@ -31593,7 +31593,7 @@ module.exports = Db;
 /* 111 */
 /***/ (function(module, exports) {
 
-module.exports = {"_args":[["mongodb@2.2.33","/Users/macair/code/tago/backend"]],"_from":"mongodb@2.2.33","_id":"mongodb@2.2.33","_inBundle":false,"_integrity":"sha1-tTfEcdNKZlG0jzb9vyl1A0Dgi1A=","_location":"/mongodb","_phantomChildren":{"buffer-shims":"1.0.0","core-util-is":"1.0.2","inherits":"2.0.3","isarray":"1.0.0","process-nextick-args":"1.0.7","string_decoder":"1.0.3","util-deprecate":"1.0.2"},"_requested":{"type":"version","registry":true,"raw":"mongodb@2.2.33","name":"mongodb","escapedName":"mongodb","rawSpec":"2.2.33","saveSpec":null,"fetchSpec":"2.2.33"},"_requiredBy":["/mongoose"],"_resolved":"https://registry.npmjs.org/mongodb/-/mongodb-2.2.33.tgz","_spec":"2.2.33","_where":"/Users/macair/code/tago/backend","author":{"name":"Christian Kvalheim"},"bugs":{"url":"https://github.com/mongodb/node-mongodb-native/issues"},"dependencies":{"es6-promise":"3.2.1","mongodb-core":"2.1.17","readable-stream":"2.2.7"},"description":"The official MongoDB driver for Node.js","devDependencies":{"JSONStream":"^1.0.7","betterbenchmarks":"^0.1.0","bluebird":"3.4.6","bson":"latest","cli-table":"^0.3.1","co":"4.6.0","colors":"^1.1.2","coveralls":"^2.11.6","eslint":"^3.8.1","event-stream":"^3.3.2","gleak":"0.5.0","integra":"0.1.8","jsdoc":"3.4.0","ldjson-stream":"^1.2.1","mongodb-extended-json":"1.7.1","mongodb-topology-manager":"1.0.x","mongodb-version-manager":"github:christkv/mongodb-version-manager#master","nyc":"^8.1.0","optimist":"0.6.1","rimraf":"2.5.4","semver":"5.3.0","worker-farm":"^1.3.1"},"engines":{"node":">=0.10.3"},"homepage":"https://github.com/mongodb/node-mongodb-native","keywords":["mongodb","driver","official"],"license":"Apache-2.0","main":"index.js","name":"mongodb","nyc":{"include":["lib/**/*.js"]},"repository":{"type":"git","url":"git+ssh://git@github.com/mongodb/node-mongodb-native.git"},"scripts":{"coverage":"nyc node test/runner.js -t functional && node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls","lint":"eslint lib","test":"node test/runner.js -t functional"},"version":"2.2.33"}
+module.exports = {"_args":[["mongodb@2.2.33","/Users/matthewsutton/code/tago/backend"]],"_from":"mongodb@2.2.33","_id":"mongodb@2.2.33","_inBundle":false,"_integrity":"sha1-tTfEcdNKZlG0jzb9vyl1A0Dgi1A=","_location":"/mongodb","_phantomChildren":{"buffer-shims":"1.0.0","core-util-is":"1.0.2","inherits":"2.0.3","isarray":"1.0.0","process-nextick-args":"1.0.7","string_decoder":"1.0.3","util-deprecate":"1.0.2"},"_requested":{"type":"version","registry":true,"raw":"mongodb@2.2.33","name":"mongodb","escapedName":"mongodb","rawSpec":"2.2.33","saveSpec":null,"fetchSpec":"2.2.33"},"_requiredBy":["/mongoose"],"_resolved":"https://registry.npmjs.org/mongodb/-/mongodb-2.2.33.tgz","_spec":"2.2.33","_where":"/Users/matthewsutton/code/tago/backend","author":{"name":"Christian Kvalheim"},"bugs":{"url":"https://github.com/mongodb/node-mongodb-native/issues"},"dependencies":{"es6-promise":"3.2.1","mongodb-core":"2.1.17","readable-stream":"2.2.7"},"description":"The official MongoDB driver for Node.js","devDependencies":{"JSONStream":"^1.0.7","betterbenchmarks":"^0.1.0","bluebird":"3.4.6","bson":"latest","cli-table":"^0.3.1","co":"4.6.0","colors":"^1.1.2","coveralls":"^2.11.6","eslint":"^3.8.1","event-stream":"^3.3.2","gleak":"0.5.0","integra":"0.1.8","jsdoc":"3.4.0","ldjson-stream":"^1.2.1","mongodb-extended-json":"1.7.1","mongodb-topology-manager":"1.0.x","mongodb-version-manager":"github:christkv/mongodb-version-manager#master","nyc":"^8.1.0","optimist":"0.6.1","rimraf":"2.5.4","semver":"5.3.0","worker-farm":"^1.3.1"},"engines":{"node":">=0.10.3"},"homepage":"https://github.com/mongodb/node-mongodb-native","keywords":["mongodb","driver","official"],"license":"Apache-2.0","main":"index.js","name":"mongodb","nyc":{"include":["lib/**/*.js"]},"repository":{"type":"git","url":"git+ssh://git@github.com/mongodb/node-mongodb-native.git"},"scripts":{"coverage":"nyc node test/runner.js -t functional && node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls","lint":"eslint lib","test":"node test/runner.js -t functional"},"version":"2.2.33"}
 
 /***/ }),
 /* 112 */
@@ -42649,9 +42649,9 @@ const mongoose = __webpack_require__(27);
 const Schema = mongoose.Schema;
 
 const HeatmapSchema = new Schema({
-    dateCreated: Number,
-    area: Number,
-    img: String
+  dateCreated: Number,
+  area: Number,
+  img: String
 });
 
 module.exports = mongoose.model('Heatmap', HeatmapSchema);
@@ -42664,11 +42664,10 @@ const mongoose = __webpack_require__(27);
 const Schema = mongoose.Schema;
 
 const ZoneSchema = new Schema({
-    dateCreated: Number,
-    intervals: Array,
-    name: String,
-    area: { type: mongoose.Schema.Types.ObjectId, ref: 'Domain' }
-
+  dateCreated: Number,
+  intervals: Array,
+  name: String,
+  area: { type: mongoose.Schema.Types.ObjectId, ref: 'Domain' }
 });
 
 module.exports = mongoose.model('Zone', ZoneSchema);
@@ -60106,14 +60105,16 @@ function unpipe(stream) {
 
 const express = __webpack_require__(63);
 const mongoose = __webpack_require__(27);
-mongoose.Promise = __webpack_require__(137);
-const app = express();
 
+mongoose.Promise = __webpack_require__(137);
+
+const app = express();
 const router = express.Router();
 
 const Domain = __webpack_require__(210);
 const Heatmap = __webpack_require__(135);
 const Zone = __webpack_require__(136);
+
 const MongoClient = __webpack_require__(25).MongoClient;
 const db = MongoClient.connect('mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago');
 
@@ -60142,6 +60143,7 @@ var ZonesQuery = function () {
 
 router.route("/domain").get((req, res) => {
 	var query = Domain.find({});
+
 	FindQuery(query).then(function (data) {
 		res.json(data);
 	}, function (err) {
@@ -60151,6 +60153,7 @@ router.route("/domain").get((req, res) => {
 
 router.route("/domain/id/:domain_id").get((req, res) => {
 	var query = Domain.findById(req.params.domain_id);
+
 	FindQuery(query).then(function (data) {
 		res.json(data);
 	}, function (err) {
@@ -60160,6 +60163,7 @@ router.route("/domain/id/:domain_id").get((req, res) => {
 
 router.route("/domain/date/:domain_dateCreated").get((req, res) => {
 	var query = Domain.findOne({ dateCreated: req.params.domain_dateCreated });
+
 	FindQuery(query).then(function (data) {
 		res.json(data);
 	}, function (err) {
@@ -60181,6 +60185,8 @@ router.route("/domain/currentZones/:interval").get((req, res) => {
 				};
 
 				let arr = intervals.slice(intervals.length - (1 + i), intervals.length - 1);
+
+				filtInt.dateCreated = arr[0].dateCreated;
 
 				for (var j in arr) {
 					filtInt.activity += arr[j].activity / arr.length;
@@ -60605,11 +60611,11 @@ const mongoose = __webpack_require__(27);
 const Schema = mongoose.Schema;
 
 const DomainSchema = new Schema({
-    name: String,
-    heatmaps: Array,
-    dateCreated: Number,
-    zones: Array,
-    description: String
+  name: String,
+  heatmaps: Array,
+  dateCreated: Number,
+  zones: Array,
+  description: String
 });
 
 module.exports = mongoose.model('Domain', DomainSchema);
@@ -60631,12 +60637,14 @@ mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", { useM
 app.get('/', (req, res) => res.send('Hello!'));
 
 const router = express.Router();
+
 var allowCrossDomain = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 };
+
 app.use(allowCrossDomain);
 app.use('/api', DomainRouter);
 app.use('/api', ZoneRouter);
@@ -84803,7 +84811,7 @@ module.exports = WireProtocol;
 /* 328 */
 /***/ (function(module, exports) {
 
-module.exports = {"_args":[["mongodb-core@2.1.17","/Users/macair/code/tago/backend"]],"_from":"mongodb-core@2.1.17","_id":"mongodb-core@2.1.17","_inBundle":false,"_integrity":"sha1-pBizN6FKFJkPtRC5I97mqBMXPfg=","_location":"/mongodb-core","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"mongodb-core@2.1.17","name":"mongodb-core","escapedName":"mongodb-core","rawSpec":"2.1.17","saveSpec":null,"fetchSpec":"2.1.17"},"_requiredBy":["/mongodb"],"_resolved":"https://registry.npmjs.org/mongodb-core/-/mongodb-core-2.1.17.tgz","_spec":"2.1.17","_where":"/Users/macair/code/tago/backend","author":{"name":"Christian Kvalheim"},"bugs":{"url":"https://github.com/christkv/mongodb-core/issues"},"dependencies":{"bson":"~1.0.4","require_optional":"~1.0.0"},"description":"Core MongoDB driver functionality, no bells and whistles and meant for integration not end applications","devDependencies":{"co":"^4.5.4","coveralls":"^2.11.6","es6-promise":"^3.0.2","gleak":"0.5.0","integra":"0.1.8","jsdoc":"3.3.0-alpha8","mkdirp":"0.5.0","mongodb-topology-manager":"1.0.x","mongodb-version-manager":"github:christkv/mongodb-version-manager#master","nyc":"^5.5.0","optimist":"latest","rimraf":"2.2.6","semver":"4.1.0"},"homepage":"https://github.com/christkv/mongodb-core","keywords":["mongodb","core"],"license":"Apache-2.0","main":"index.js","name":"mongodb-core","peerOptionalDependencies":{"kerberos":"~0.0","bson-ext":"1.0.5"},"repository":{"type":"git","url":"git://github.com/christkv/mongodb-core.git"},"scripts":{"coverage":"nyc node test/runner.js -t functional -l && node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls","lint":"eslint lib","test":"node test/runner.js -t functional"},"version":"2.1.17"}
+module.exports = {"_args":[["mongodb-core@2.1.17","/Users/matthewsutton/code/tago/backend"]],"_from":"mongodb-core@2.1.17","_id":"mongodb-core@2.1.17","_inBundle":false,"_integrity":"sha1-pBizN6FKFJkPtRC5I97mqBMXPfg=","_location":"/mongodb-core","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"mongodb-core@2.1.17","name":"mongodb-core","escapedName":"mongodb-core","rawSpec":"2.1.17","saveSpec":null,"fetchSpec":"2.1.17"},"_requiredBy":["/mongodb"],"_resolved":"https://registry.npmjs.org/mongodb-core/-/mongodb-core-2.1.17.tgz","_spec":"2.1.17","_where":"/Users/matthewsutton/code/tago/backend","author":{"name":"Christian Kvalheim"},"bugs":{"url":"https://github.com/christkv/mongodb-core/issues"},"dependencies":{"bson":"~1.0.4","require_optional":"~1.0.0"},"description":"Core MongoDB driver functionality, no bells and whistles and meant for integration not end applications","devDependencies":{"co":"^4.5.4","coveralls":"^2.11.6","es6-promise":"^3.0.2","gleak":"0.5.0","integra":"0.1.8","jsdoc":"3.3.0-alpha8","mkdirp":"0.5.0","mongodb-topology-manager":"1.0.x","mongodb-version-manager":"github:christkv/mongodb-version-manager#master","nyc":"^5.5.0","optimist":"latest","rimraf":"2.2.6","semver":"4.1.0"},"homepage":"https://github.com/christkv/mongodb-core","keywords":["mongodb","core"],"license":"Apache-2.0","main":"index.js","name":"mongodb-core","peerOptionalDependencies":{"kerberos":"~0.0","bson-ext":"1.0.5"},"repository":{"type":"git","url":"git://github.com/christkv/mongodb-core.git"},"scripts":{"coverage":"nyc node test/runner.js -t functional -l && node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls","lint":"eslint lib","test":"node test/runner.js -t functional"},"version":"2.1.17"}
 
 /***/ }),
 /* 329 */
@@ -102891,7 +102899,7 @@ module.exports = exports['default'];
 /* 392 */
 /***/ (function(module, exports) {
 
-module.exports = {"_args":[["mongoose@4.13.4","/Users/macair/code/tago/backend"]],"_from":"mongoose@4.13.4","_id":"mongoose@4.13.4","_inBundle":false,"_integrity":"sha512-MYS9qWVmWz0PJ1tewtGisKT3/61ctcgX05w9epcy2WQ+1IH4HIPFO5hToR4u+ro7fyBWpSsTlUPMBJblzRLCzQ==","_location":"/mongoose","_phantomChildren":{"lodash":"4.17.4"},"_requested":{"type":"version","registry":true,"raw":"mongoose@4.13.4","name":"mongoose","escapedName":"mongoose","rawSpec":"4.13.4","saveSpec":null,"fetchSpec":"4.13.4"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/mongoose/-/mongoose-4.13.4.tgz","_spec":"4.13.4","_where":"/Users/macair/code/tago/backend","author":{"name":"Guillermo Rauch","email":"guillermo@learnboost.com"},"browser":"lib/browser.js","browserDependencies":{"browserify":"4.1.10","chai":"3.5.0","karma":"0.12.16","karma-chai":"0.1.0","karma-mocha":"0.1.4","karma-chrome-launcher":"0.1.4","karma-sauce-launcher":"0.2.8"},"bugs":{"url":"https://github.com/Automattic/mongoose/issues/new","email":"mongoose-orm@googlegroups.com"},"dependencies":{"async":"2.1.4","bson":"~1.0.4","hooks-fixed":"2.0.2","kareem":"1.5.0","lodash.get":"4.4.2","mongodb":"2.2.33","mpath":"0.3.0","mpromise":"0.5.5","mquery":"2.3.2","ms":"2.0.0","muri":"1.3.0","regexp-clone":"0.0.1","sliced":"1.0.1"},"description":"Mongoose MongoDB ODM","devDependencies":{"acquit":"0.4.1","acquit-ignore":"0.0.3","benchmark":"2.1.2","bluebird":"3.5.0","co":"4.6.0","dox":"0.3.1","eslint":"2.4.0","highlight.js":"7.0.1","istanbul":"0.4.4","jade":"0.26.3","lodash":"4.16.6","markdown":"0.5.0","marked":"0.3.6","mocha":"3.2.0","mongodb-topology-manager":"1.0.11","mongoose-long":"0.1.1","node-static":"0.7.7","nsp":"~2.8.1","power-assert":"1.4.1","q":"1.5.1","tbd":"0.6.4","uglify-js":"2.7.0","uuid":"2.0.3","uuid-parse":"1.0.0","validator":"5.4.0"},"directories":{"lib":"./lib/mongoose"},"engines":{"node":">=0.6.19"},"homepage":"http://mongoosejs.com","keywords":["mongodb","document","model","schema","database","odm","data","datastore","query","nosql","orm","db"],"license":"MIT","main":"./index.js","name":"mongoose","repository":{"type":"git","url":"git://github.com/Automattic/mongoose.git"},"scripts":{"fix-lint":"eslint . --fix","install-browser":"npm install `node format_deps.js`","lint":"eslint . --quiet","nsp":"nsp check","test":"mocha test/*.test.js test/**/*.test.js","test-cov":"istanbul cover --report text --report html _mocha test/*.test.js"},"version":"4.13.4"}
+module.exports = {"_args":[["mongoose@4.13.4","/Users/matthewsutton/code/tago/backend"]],"_from":"mongoose@4.13.4","_id":"mongoose@4.13.4","_inBundle":false,"_integrity":"sha512-MYS9qWVmWz0PJ1tewtGisKT3/61ctcgX05w9epcy2WQ+1IH4HIPFO5hToR4u+ro7fyBWpSsTlUPMBJblzRLCzQ==","_location":"/mongoose","_phantomChildren":{"lodash":"4.17.4"},"_requested":{"type":"version","registry":true,"raw":"mongoose@4.13.4","name":"mongoose","escapedName":"mongoose","rawSpec":"4.13.4","saveSpec":null,"fetchSpec":"4.13.4"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/mongoose/-/mongoose-4.13.4.tgz","_spec":"4.13.4","_where":"/Users/matthewsutton/code/tago/backend","author":{"name":"Guillermo Rauch","email":"guillermo@learnboost.com"},"browser":"lib/browser.js","browserDependencies":{"browserify":"4.1.10","chai":"3.5.0","karma":"0.12.16","karma-chai":"0.1.0","karma-mocha":"0.1.4","karma-chrome-launcher":"0.1.4","karma-sauce-launcher":"0.2.8"},"bugs":{"url":"https://github.com/Automattic/mongoose/issues/new","email":"mongoose-orm@googlegroups.com"},"dependencies":{"async":"2.1.4","bson":"~1.0.4","hooks-fixed":"2.0.2","kareem":"1.5.0","lodash.get":"4.4.2","mongodb":"2.2.33","mpath":"0.3.0","mpromise":"0.5.5","mquery":"2.3.2","ms":"2.0.0","muri":"1.3.0","regexp-clone":"0.0.1","sliced":"1.0.1"},"description":"Mongoose MongoDB ODM","devDependencies":{"acquit":"0.4.1","acquit-ignore":"0.0.3","benchmark":"2.1.2","bluebird":"3.5.0","co":"4.6.0","dox":"0.3.1","eslint":"2.4.0","highlight.js":"7.0.1","istanbul":"0.4.4","jade":"0.26.3","lodash":"4.16.6","markdown":"0.5.0","marked":"0.3.6","mocha":"3.2.0","mongodb-topology-manager":"1.0.11","mongoose-long":"0.1.1","node-static":"0.7.7","nsp":"~2.8.1","power-assert":"1.4.1","q":"1.5.1","tbd":"0.6.4","uglify-js":"2.7.0","uuid":"2.0.3","uuid-parse":"1.0.0","validator":"5.4.0"},"directories":{"lib":"./lib/mongoose"},"engines":{"node":">=0.6.19"},"homepage":"http://mongoosejs.com","keywords":["mongodb","document","model","schema","database","odm","data","datastore","query","nosql","orm","db"],"license":"MIT","main":"./index.js","name":"mongoose","repository":{"type":"git","url":"git://github.com/Automattic/mongoose.git"},"scripts":{"fix-lint":"eslint . --fix","install-browser":"npm install `node format_deps.js`","lint":"eslint . --quiet","nsp":"nsp check","test":"mocha test/*.test.js test/**/*.test.js","test-cov":"istanbul cover --report text --report html _mocha test/*.test.js"},"version":"4.13.4"}
 
 /***/ }),
 /* 393 */
@@ -104196,7 +104204,7 @@ module.exports.version = __webpack_require__(402).version;
 /* 402 */
 /***/ (function(module, exports) {
 
-module.exports = {"_args":[["muri@1.3.0","/Users/macair/code/tago/backend"]],"_from":"muri@1.3.0","_id":"muri@1.3.0","_inBundle":false,"_integrity":"sha512-FiaFwKl864onHFFUV/a2szAl7X0fxVlSKNdhTf+BM8i8goEgYut8u5P9MqQqIYwvaMxjzVESsoEm/2kfkFH1rg==","_location":"/muri","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"muri@1.3.0","name":"muri","escapedName":"muri","rawSpec":"1.3.0","saveSpec":null,"fetchSpec":"1.3.0"},"_requiredBy":["/mongoose"],"_resolved":"https://registry.npmjs.org/muri/-/muri-1.3.0.tgz","_spec":"1.3.0","_where":"/Users/macair/code/tago/backend","author":{"name":"Aaron Heckmann","email":"aaron.heckmann+github@gmail.com"},"bugs":{"url":"https://github.com/aheckmann/muri/issues"},"description":"MongoDB URI parser","devDependencies":{"mocha":"1.21.5"},"homepage":"https://github.com/aheckmann/muri#readme","keywords":["mongodb","uri","parser"],"license":"MIT","main":"index.js","name":"muri","repository":{"type":"git","url":"git://github.com/aheckmann/muri.git"},"scripts":{"test":"make test"},"version":"1.3.0"}
+module.exports = {"_args":[["muri@1.3.0","/Users/matthewsutton/code/tago/backend"]],"_from":"muri@1.3.0","_id":"muri@1.3.0","_inBundle":false,"_integrity":"sha512-FiaFwKl864onHFFUV/a2szAl7X0fxVlSKNdhTf+BM8i8goEgYut8u5P9MqQqIYwvaMxjzVESsoEm/2kfkFH1rg==","_location":"/muri","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"muri@1.3.0","name":"muri","escapedName":"muri","rawSpec":"1.3.0","saveSpec":null,"fetchSpec":"1.3.0"},"_requiredBy":["/mongoose"],"_resolved":"https://registry.npmjs.org/muri/-/muri-1.3.0.tgz","_spec":"1.3.0","_where":"/Users/matthewsutton/code/tago/backend","author":{"name":"Aaron Heckmann","email":"aaron.heckmann+github@gmail.com"},"bugs":{"url":"https://github.com/aheckmann/muri/issues"},"description":"MongoDB URI parser","devDependencies":{"mocha":"1.21.5"},"homepage":"https://github.com/aheckmann/muri#readme","keywords":["mongodb","uri","parser"],"license":"MIT","main":"index.js","name":"muri","repository":{"type":"git","url":"git://github.com/aheckmann/muri.git"},"scripts":{"test":"make test"},"version":"1.3.0"}
 
 /***/ }),
 /* 403 */
