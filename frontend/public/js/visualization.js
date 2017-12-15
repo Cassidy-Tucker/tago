@@ -69,9 +69,12 @@ $(function() {
   }
 
   function drawGraph(domain) {
+
     setMaxActivity(domain);
 
     for (var i = 0; i < domain.zones.length; i++) {
+      zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+
       if(domain.zones[i].intervals.length > 30) {
         domain.zones[i].intervals = domain.zones[i].intervals.splice(
           domain.zones[i].intervals.length-30,
@@ -100,14 +103,14 @@ $(function() {
         .data([domain.zones[i].intervals])
         .attr("class", "line")
         .attr("fill", "none")
-        .style("stroke", graphElems.colors[i])
+        .style("stroke", zoneColor)
         .style("stroke-width", 2.5)
         .attr("d", valueline);
 
       svg.selectAll("dot")
           .data(domain.zones[i].intervals)
         .enter().append("circle")
-          .style("fill", graphElems.colors[i])
+          .style("fill", zoneColor)
           .attr("r", 6)
           .attr("cx", function(d) { return x(d.date); })
           .attr("cy", function(d) { return y(d.activity); })
@@ -144,12 +147,13 @@ $(function() {
       .attr("width", legendRectSize)
       .attr("height", legendRectSize)
       .style("fill", function(d,i){
-
-      return graphElems.colors[i];
+        zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+        return zoneColor;
       })
       .style("stroke", function(d,i){
         // this works the same as above
-        return graphElems.colors[i];
+        zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+        return zoneColor;
       });
 
     legend.append("text")
