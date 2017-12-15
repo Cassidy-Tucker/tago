@@ -1,3 +1,5 @@
+import * as d3 from 'd3';
+
 $(function() {
   var margin = {
     top: 50,
@@ -125,7 +127,7 @@ $(function() {
     }
 
     var legend = svg.selectAll('.legend')
-        .data(graphElems.zones) 
+        .data(graphElems.zones)
       .enter().append("g")
         .attr("class", "legend")
         .attr("background-color", "yellow")
@@ -141,7 +143,7 @@ $(function() {
       .attr("width", legendRectSize)
       .attr("height", legendRectSize)
       .style("fill", function(d,i){
-     
+
       return graphElems.colors[i];
       })
       .style("stroke", function(d,i){
