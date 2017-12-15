@@ -1,10 +1,6 @@
-$(function() {
-  $("#datepicker").datepicker({
-    inline: true,
-    showOtherMonths: true,
-    dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  });
+import './visualization';
 
+$(function() {
   $('#buttonbutton').on('click', (e) =>{
     e.preventDefault()
     var newInterval = $('#intervalPicker').val()
