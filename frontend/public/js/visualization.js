@@ -23,9 +23,9 @@ $(function() {
 
   var graphElems = {
     colors: [
-      "cadetblue",
-      "darkslateblue",
-      "dimgray",
+      "#ebff00",
+      "#ff0000",
+      "#1000c2",
       "dodgerblue",
       "indigo",
       "black"
@@ -45,7 +45,7 @@ $(function() {
           .append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
-          .style("background-color", "grey").append("g")
+          .style("background-color", "#d8e0f0").append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var div = d3.select("body").append("div")
@@ -201,24 +201,3 @@ $(function() {
     }
   });
 });
-//
-//      svg.selectAll("dot")
-//       .data(intervals)
-//       .enter().append("circle")
-//          .style("fill", graphElems.colors[i])
-//           .attr("r", 4)
-//           .attr("cx", function(d) { return x(d.date); })
-//           .attr("cy", function(d) { return y(d.activity); })
-//           .on("mouseover", function(d) {
-//             div.transition()
-//               .duration(200)
-//               .style("opacity", .9);
-//             div.html(Math.round(d.activity))
-//               .style("left", (d3.event.pageX) + "px")
-//               .style("top", (d3.event.pageY - 28) + "px");
-//           })
-//           .on("mouseout", function(d) {
-//             div.transition()
-//               .duration(500)
-//               .style("opacity", 0);
-//           });
