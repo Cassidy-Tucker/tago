@@ -72,8 +72,6 @@ $(function() {
 
     for (var i = 0; i < domain.zones.length; i++) {
       zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
-      console.log(zoneColor)
-      //console.log(domain);
 
       if(domain.zones[i].intervals.length > 30) {
         domain.zones[i].intervals = domain.zones[i].intervals.splice(
