@@ -16,9 +16,9 @@ $(function() {
 
   var graphElems = {
     colors: [
-      "cadetblue",
-      "darkslateblue",
-      "dimgray",
+      "#ebff00",
+      "#ff0000",
+      "#1000c2",
       "dodgerblue",
       "indigo",
       "black"
@@ -27,11 +27,12 @@ $(function() {
     maxActivity: 0
   }
 
-  var svg = d3.select("#graph-container").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .style("background-color", "white").append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  var svg = d3.select("#graph-container")
+          .append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .style("background-color", "#d8e0f0").append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var div = d3.select("body").append("div")
     .attr("class", "tooltip")
