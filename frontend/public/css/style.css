@@ -808,6 +808,7 @@ div.tooltip{
 
 .vis-wrapper {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-evenly;
   font-family: Lato, sans-serif;
   color: #f9fbe7;
