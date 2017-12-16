@@ -9457,7 +9457,11 @@ $(function() {
   var options = '';
 
   for(var i = 5; i <= 120; i += 5){
-    options += '<option value = "' + i + '">' + i +'</option>';
+    if(i === 60) {
+      options += '<option value = "' + i + '" selected="selected">' + i +'</option>';
+    } else {
+        options += '<option value = "' + i + '">' + i +'</option>';
+    }
   }
 
   $('#intervalPicker').html(options)
@@ -9479,12 +9483,13 @@ $(function() {
     bottom: 150,
     left: 60
   };
+
   var width = 960 - margin.left - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
-  var x = __WEBPACK_IMPORTED_MODULE_0_d3__["g" /* scaleTime */]().range([0, width]);
-  var y = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* scaleLinear */]().range([height, 0]);
-  var y1 = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* scaleLinear */]().range([height, 0]);
+  var x = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* scaleTime */]().range([0, width]);
+  var y = __WEBPACK_IMPORTED_MODULE_0_d3__["g" /* scaleLinear */]().range([height, 0]);
+  var y1 = __WEBPACK_IMPORTED_MODULE_0_d3__["g" /* scaleLinear */]().range([height, 0]);
   var legendRectSize = 18;
   var legendSpacing = 4;
 
@@ -9501,14 +9506,14 @@ $(function() {
     maxActivity: 0
   }
 
-  var svg = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* select */]("#graph-container")
+  var svg = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* select */]("#graph-container")
           .append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .style("background-color", "#d8e0f0").append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var div = __WEBPACK_IMPORTED_MODULE_0_d3__["h" /* select */]("body").append("div")
+  var div = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* select */]("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
@@ -9541,9 +9546,12 @@ $(function() {
   }
 
   function drawGraph(domain) {
+
     setMaxActivity(domain);
 
     for (var i = 0; i < domain.zones.length; i++) {
+      let zoneColor = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* rgb */](domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+
       if(domain.zones[i].intervals.length > 30) {
         domain.zones[i].intervals = domain.zones[i].intervals.splice(
           domain.zones[i].intervals.length-30,
@@ -9572,14 +9580,14 @@ $(function() {
         .data([domain.zones[i].intervals])
         .attr("class", "line")
         .attr("fill", "none")
-        .style("stroke", graphElems.colors[i])
+        .style("stroke", zoneColor)
         .style("stroke-width", 2.5)
         .attr("d", valueline);
 
       svg.selectAll("dot")
           .data(domain.zones[i].intervals)
         .enter().append("circle")
-          .style("fill", graphElems.colors[i])
+          .style("fill", zoneColor)
           .attr("r", 6)
           .attr("cx", function(d) { return x(d.date); })
           .attr("cy", function(d) { return y(d.activity); })
@@ -9616,12 +9624,13 @@ $(function() {
       .attr("width", legendRectSize)
       .attr("height", legendRectSize)
       .style("fill", function(d,i){
-
-      return graphElems.colors[i];
+        let zoneColor = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* rgb */](domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+        return zoneColor;
       })
       .style("stroke", function(d,i){
         // this works the same as above
-        return graphElems.colors[i];
+        let zoneColor = __WEBPACK_IMPORTED_MODULE_0_d3__["f" /* rgb */](domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+        return zoneColor;
       });
 
     legend.append("text")
@@ -9633,7 +9642,7 @@ $(function() {
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
       .call(__WEBPACK_IMPORTED_MODULE_0_d3__["a" /* axisBottom */](x)
-      .tickFormat(__WEBPACK_IMPORTED_MODULE_0_d3__["i" /* timeFormat */]("%X")))
+      .tickFormat(__WEBPACK_IMPORTED_MODULE_0_d3__["j" /* timeFormat */]("%X")))
       .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
@@ -9670,19 +9679,34 @@ $(function() {
       .text("Activity vs. Time Graph");
   }
 
-  $.ajax({
-    type:'GET',
-    contentType:'application/json; charset=utf-8',
-    url:'http://localhost:3001/api/domain/currentZones/60',
-    dataType:"json",
-    success: function(domain, error) {
-      if (error != 'success') console.log(error);
+  function getTagoData(){
+    let duration = $("#intervalPicker").val()
 
-      var heatmap = domain.heatmaps.pop();
-      parseData(heatmap);
-      drawGraph(domain);
+    if(!duration) {
+      duration = 60;
     }
+
+    $.ajax({
+      type:'GET',
+      contentType:'application/json; charset=utf-8',
+      url:'http://localhost:3001/api/domain/currentZones/' + duration,
+      dataType:"json",
+      success: function(domain, error) {
+        if (error != 'success') console.log(error);
+
+        var heatmap = domain.heatmaps.pop();
+        parseData(heatmap);
+        drawGraph(domain);
+      }
+    });
+  }
+
+  $("#intervalPicker").change(function() {
+    svg.selectAll("*").remove()
+    getTagoData()
   });
+
+  getTagoData();
 });
 
 
@@ -9705,7 +9729,7 @@ $(function() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_d3_collection__ = __webpack_require__(23);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_d3_color__ = __webpack_require__(7);
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_6_d3_color__["f"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_d3_dispatch__ = __webpack_require__(12);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_d3_drag__ = __webpack_require__(50);
@@ -9737,17 +9761,17 @@ $(function() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_d3_request__ = __webpack_require__(389);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_d3_scale__ = __webpack_require__(396);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_22_d3_scale__["a"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_22_d3_scale__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_22_d3_scale__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_22_d3_scale__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_d3_selection__ = __webpack_require__(1);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_23_d3_selection__["b"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_23_d3_selection__["f"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_23_d3_selection__["f"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_d3_shape__ = __webpack_require__(429);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_24_d3_shape__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_d3_time__ = __webpack_require__(44);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_d3_time_format__ = __webpack_require__(82);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_26_d3_time_format__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_26_d3_time_format__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_d3_timer__ = __webpack_require__(35);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_d3_transition__ = __webpack_require__(62);

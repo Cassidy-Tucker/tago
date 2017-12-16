@@ -7,6 +7,7 @@ $(function() {
     bottom: 150,
     left: 60
   };
+
   var width = 960 - margin.left - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
@@ -73,7 +74,7 @@ $(function() {
     setMaxActivity(domain);
 
     for (var i = 0; i < domain.zones.length; i++) {
-      zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+      let zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
 
       if(domain.zones[i].intervals.length > 30) {
         domain.zones[i].intervals = domain.zones[i].intervals.splice(
@@ -147,12 +148,12 @@ $(function() {
       .attr("width", legendRectSize)
       .attr("height", legendRectSize)
       .style("fill", function(d,i){
-        zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+        let zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
         return zoneColor;
       })
       .style("stroke", function(d,i){
         // this works the same as above
-        zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
+        let zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
         return zoneColor;
       });
 
@@ -202,17 +203,32 @@ $(function() {
       .text("Activity vs. Time Graph");
   }
 
-  $.ajax({
-    type:'GET',
-    contentType:'application/json; charset=utf-8',
-    url:'http://localhost:3001/api/domain/currentZones/60',
-    dataType:"json",
-    success: function(domain, error) {
-      if (error != 'success') console.log(error);
+  function getTagoData(){
+    let duration = $("#intervalPicker").val()
 
-      var heatmap = domain.heatmaps.pop();
-      parseData(heatmap);
-      drawGraph(domain);
+    if(!duration) {
+      duration = 60;
     }
+
+    $.ajax({
+      type:'GET',
+      contentType:'application/json; charset=utf-8',
+      url:'http://localhost:3001/api/domain/currentZones/' + duration,
+      dataType:"json",
+      success: function(domain, error) {
+        if (error != 'success') console.log(error);
+
+        var heatmap = domain.heatmaps.pop();
+        parseData(heatmap);
+        drawGraph(domain);
+      }
+    });
+  }
+
+  $("#intervalPicker").change(function() {
+    svg.selectAll("*").remove()
+    getTagoData()
   });
+
+  getTagoData();
 });
