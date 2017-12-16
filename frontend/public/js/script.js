@@ -21,7 +21,11 @@ $(function() {
   var options = '';
 
   for(var i = 5; i <= 120; i += 5){
-    options += '<option value = "' + i + '">' + i +'</option>';
+    if(i === 60) {
+      options += '<option value = "' + i + '" selected="selected">' + i +'</option>';
+    } else {
+        options += '<option value = "' + i + '">' + i +'</option>';
+    }
   }
 
   $('#intervalPicker').html(options)
