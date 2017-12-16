@@ -60178,7 +60178,7 @@ router.route("/domain/currentZones/:interval").get((req, res) => {
 			    intervals = zone.intervals,
 			    retArr = [];
 
-			for (var i = intervals.length - 1; i >= 0; i -= iterCount) {
+			for (var i = intervals.length - 1; i > 0; i -= iterCount) {
 				filtInt = {
 					activity: 0,
 					dateCreated: intervals[i].dateCreated
