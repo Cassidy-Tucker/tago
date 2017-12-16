@@ -12,7 +12,7 @@ $(function() {
 
   var x = d3.scaleTime().range([0, width]);
   var y = d3.scaleLinear().range([height, 0]);
-  var y1 = d3.scaleLinear().range([height, 0]);
+  var formatTime = d3.timeFormat("%H");
   var legendRectSize = 18;
   var legendSpacing = 4;
 
@@ -119,7 +119,7 @@ $(function() {
             .duration(200)
             .style("opacity", .9);
 
-            div.html(d.activity.toFixed(2))
+            div.html(d.activity.toFixed(3))
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px");
           })
@@ -165,7 +165,7 @@ $(function() {
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
-      .tickFormat(d3.timeFormat("%X")))
+      .tickFormat(formatTime)
       .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
@@ -195,7 +195,7 @@ $(function() {
 
     svg.append("text")
       .attr("x", (width / 2))
-      .attr("y", 10)
+      .attr("y", 0 - (margin.top / 2))
       .attr("text-anchor", "middle")
       .style("font-size", "24px")
       .style("text-decoration", "underline")
