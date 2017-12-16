@@ -9701,18 +9701,12 @@ $(function() {
     });
   }
 
-  function clearGraph() {
-    svg = $("#graph-container").children()[0];
-    svg.empty();
-  }
-
+  $("#intervalPicker").change(function() {
+    svg.selectAll("*").remove()
+    getTagoData()
+  });
 
   getTagoData();
-
-  $("#intervalPicker").change(function() {
-    clearGraph()
-    getTagoData()
-  })
 });
 
 
