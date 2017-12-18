@@ -9642,7 +9642,7 @@ $(function() {
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
       .call(__WEBPACK_IMPORTED_MODULE_0_d3__["a" /* axisBottom */](x)
-      .tickFormat(__WEBPACK_IMPORTED_MODULE_0_d3__["j" /* timeFormat */]("%X")))
+      .tickFormat(__WEBPACK_IMPORTED_MODULE_0_d3__["m" /* timeFormat */]("%X")))
       .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
@@ -9709,6 +9709,118 @@ $(function() {
   getTagoData();
 });
 
+//maps the node data to the tree layout
+nodes = treemap(nodes);
+
+//append the svg object to the body of the page
+//appends a 'group' element to 'svg'
+//moves the 'group' element to top left margin
+var svg = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* select */]("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom),
+    g = svg.append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")" );
+
+//adds the links between the nodes
+var link = g.selectAll(".link")
+    .data( nodes.descendants().slice(1))
+  .enter().append("path")
+    .attr("class", "link")
+    .style("stroke", function(d) { return d.data.level; })
+    .attr("d", function(d) {
+       return "M" + d.y + "," + d.x
+         + "C" + (d.y + d.parent.y) / 2 + "," + d.x
+         + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
+         + " " + d.parent.y + "," + d.parent.x;
+       });
+
+//adds each node as a group
+var node = g.selectAll(".node")
+    .data(nodes.descendants())
+  .enter().append("g")
+    .attr("class", function(d) {
+      return "node" +
+      (d.children ? " node--internal" : " node--leaf"); })
+    .attr("transform", function(d) {
+      return "translate(" + d.y + "," + d.x + ")"; });
+
+//adds the circle to the node
+node.append("path")
+  .style("stroke", function(d) { return d.data.type; })
+  .style("fill", function(d) { return d.data.level; })
+  .attr("d", __WEBPACK_IMPORTED_MODULE_0_d3__["j" /* symbol */]()
+      .size(function(d) { return d.data.value * 30; })
+      .type(function (d) { if
+        (d.data.value >= 9) { return __WEBPACK_IMPORTED_MODULE_0_d3__["k" /* symbolCross */]; } else if
+        (d.data.value <= 9) { return __WEBPACK_IMPORTED_MODULE_0_d3__["l" /* symbolDiamond */]; }
+      }));
+
+//adds the text to the node
+node.append("text")
+  .attr("dy", ".35em")
+  .attr("x", function(d) { return d.children ?
+    (d.data.value + 4) * - 1 : d.data.value + 4 })
+  .style("text-anchor", function(d) {
+    return d.children ? "end" : "start"; })
+  .text(function(d) { return d.data.name; });
+
+  //maps the node data to the tree layout
+  nodes = treemap(nodes);
+
+  //append the svg object to the body of the page
+  //appends a 'group' element to 'svg'
+  //moves the 'group' element to top left margin
+  var svg = __WEBPACK_IMPORTED_MODULE_0_d3__["i" /* select */]("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom),
+      g = svg.append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")" );
+
+  //adds the links between the nodes
+  var link = g.selectAll(".link")
+      .data( nodes.descendants().slice(1))
+    .enter().append("path")
+      .attr("class", "link")
+      .style("stroke", function(d) { return d.data.level; })
+      .attr("d", function(d) {
+         return "M" + d.y + "," + d.x
+           + "C" + (d.y + d.parent.y) / 2 + "," + d.x
+           + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
+           + " " + d.parent.y + "," + d.parent.x;
+         });
+
+  //adds each node as a group
+  var node = g.selectAll(".node")
+      .data(nodes.descendants())
+    .enter().append("g")
+      .attr("class", function(d) {
+        return "node" +
+        (d.children ? " node--internal" : " node--leaf"); })
+      .attr("transform", function(d) {
+        return "translate(" + d.y + "," + d.x + ")"; });
+
+  //adds the circle to the node
+  node.append("path")
+    .style("stroke", function(d) { return d.data.type; })
+    .style("fill", function(d) { return d.data.level; })
+    .attr("d", __WEBPACK_IMPORTED_MODULE_0_d3__["j" /* symbol */]()
+        .size(function(d) { return d.data.value * 30; })
+        .type(function (d) { if
+          (d.data.value >= 9) { return __WEBPACK_IMPORTED_MODULE_0_d3__["k" /* symbolCross */]; } else if
+          (d.data.value <= 9) { return __WEBPACK_IMPORTED_MODULE_0_d3__["l" /* symbolDiamond */]; }
+        }));
+
+  //adds the text to the node
+  node.append("text")
+    .attr("dy", ".35em")
+    .attr("x", function(d) { return d.children ?
+      (d.data.value + 4) * - 1 : d.data.value + 4 })
+    .style("text-anchor", function(d) {
+      return d.children ? "end" : "start"; })
+    .text(function(d) { return d.data.name; });
+
 
 /***/ }),
 /* 173 */
@@ -9768,10 +9880,13 @@ $(function() {
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_23_d3_selection__["f"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_d3_shape__ = __webpack_require__(429);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_24_d3_shape__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_24_d3_shape__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_24_d3_shape__["c"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_24_d3_shape__["d"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_d3_time__ = __webpack_require__(44);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_d3_time_format__ = __webpack_require__(82);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_26_d3_time_format__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_26_d3_time_format__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_d3_timer__ = __webpack_require__(35);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_d3_transition__ = __webpack_require__(62);
@@ -20562,14 +20677,14 @@ function sequential(interpolator) {
 /* unused harmony reexport linkVertical */
 /* unused harmony reexport linkRadial */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__src_symbol__ = __webpack_require__(436);
-/* unused harmony reexport symbol */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_8__src_symbol__["a"]; });
 /* unused harmony reexport symbols */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__src_symbol_circle__ = __webpack_require__(159);
 /* unused harmony reexport symbolCircle */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__src_symbol_cross__ = __webpack_require__(160);
-/* unused harmony reexport symbolCross */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_10__src_symbol_cross__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__src_symbol_diamond__ = __webpack_require__(161);
-/* unused harmony reexport symbolDiamond */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_11__src_symbol_diamond__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__src_symbol_square__ = __webpack_require__(163);
 /* unused harmony reexport symbolSquare */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__src_symbol_star__ = __webpack_require__(162);
@@ -21232,7 +21347,7 @@ var symbols = [
   __WEBPACK_IMPORTED_MODULE_7__symbol_wye__["a" /* default */]
 ];
 
-/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+/* harmony default export */ __webpack_exports__["a"] = (function() {
   var type = Object(__WEBPACK_IMPORTED_MODULE_8__constant__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_1__symbol_circle__["a" /* default */]),
       size = Object(__WEBPACK_IMPORTED_MODULE_8__constant__["a" /* default */])(64),
       context = null;
