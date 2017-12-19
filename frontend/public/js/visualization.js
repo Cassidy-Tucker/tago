@@ -152,7 +152,6 @@ $(function() {
         return zoneColor;
       })
       .style("stroke", function(d,i){
-        // this works the same as above
         let zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
         return zoneColor;
       });
@@ -196,7 +195,7 @@ $(function() {
 
     svg.append("text")
       .attr("x", (width / 2))
-      .attr("y", 0 - (margin.top / 2))
+      .attr("y", -10)
       .attr("text-anchor", "middle")
       .style("font-size", "24px")
       .style("text-decoration", "underline")
