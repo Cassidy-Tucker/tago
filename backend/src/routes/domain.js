@@ -1,13 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
-mongoose.Promise = require("bluebird");
-const app = express();
 
+mongoose.Promise = require("bluebird");
+
+const app = express();
 const router = express.Router();
 
 const Domain = require("../models/domain");
 const Heatmap = require("../models/heatmap");
 const Zone = require("../models/zone");
+
 const MongoClient = require('mongodb').MongoClient;
 const db = MongoClient.connect('mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago');
 
@@ -31,11 +33,12 @@ var ZonesQuery = function() {
 	  });
   }).then((data) => {
 		return data;
-	})
+	});
 };
 
 router.route("/domain").get((req, res) => {
 	var query = Domain.find({});
+
 	FindQuery(query).then(function(data) {
 	  res.json(data);
 	}, function(err) {
@@ -45,6 +48,7 @@ router.route("/domain").get((req, res) => {
 
 router.route("/domain/id/:domain_id").get((req, res) => {
 	var query = Domain.findById(req.params.domain_id);
+
 	FindQuery(query).then(function(data) {
 	  res.json(data);
 	}, function(err) {
@@ -54,6 +58,7 @@ router.route("/domain/id/:domain_id").get((req, res) => {
 
 router.route("/domain/date/:domain_dateCreated").get((req, res) => {
 	var query = Domain.findOne({ dateCreated: req.params.domain_dateCreated });
+
 	FindQuery(query).then(function(data) {
 	  res.json(data);
 	}, function(err) {
@@ -79,6 +84,8 @@ router.route("/domain/currentZones/:interval").get((req, res) => {
 					intervals.length -1
 				);
 
+        filtInt.dateCreated = arr[0].dateCreated;
+        
 				for(var j in arr) {
 					filtInt.activity += arr[j].activity / arr.length;
 				}
@@ -96,7 +103,6 @@ router.route("/domain/currentZones/:interval").get((req, res) => {
 			data.heatmaps = heatmap;
 			res.json(data);
 		});
-
 	}, function(err) {
 		console.error('The promise was rejected', err, err.stack);
 	});
@@ -112,31 +118,31 @@ router.route("/heatmap/mostRecent").get((req, res) => {
 		.exec();
   heatmapPromise.then((heatmap) => {
     return res.status(200).json(heatmap);
-  })
+  });
 });
 
 router.route("/domain/query/:query_value").get((req, res) => {
-	const queryValue = req.params.query_value;
-	let query = {};
+  const queryValue = req.params.query_value;
+  let query = {};
 
-	if (isNaN(Number(queryValue))) {
-		query = {
-			$or: [
-				{ name: queryValue },
-				{ description: { $regex: RegExp(queryValue) } }
-			]
-		};
-	} else {
-		query = {
-			$or: [{ dateCreated: Number(queryValue) }]
-		};
-	}
+  if (isNaN(Number(queryValue))) {
+    query = {
+      $or: [
+        { name: queryValue },
+        { description: { $regex: RegExp(queryValue) } }
+      ]
+    };
+  } else {
+    query = {
+      $or: [{ dateCreated: Number(queryValue) }]
+    };
+  }
 
-	Domain.find(query, (err, domain) => {
-		if (err) console.log(err);
+  Domain.find(query, (err, domain) => {
+    if (err) console.log(err);
 
-		res.json(domain);
-	});
+    res.json(domain);
+  });
 });
 
 module.exports = router;
