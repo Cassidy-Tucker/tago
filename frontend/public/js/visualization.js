@@ -13,7 +13,7 @@ $(function() {
 
   var x = d3.scaleTime().range([0, width]);
   var y = d3.scaleLinear().range([height, 0]);
-  var formatTime = d3.timeFormat("%H");
+  var y1 = d3.scaleLinear().range([height, 0]);
   var legendRectSize = 18;
   var legendSpacing = 4;
 
@@ -120,7 +120,7 @@ $(function() {
             .duration(200)
             .style("opacity", .9);
 
-            div.html(d.activity.toFixed(3))
+            div.html(d.activity.toFixed(2))
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px");
           })
@@ -152,6 +152,7 @@ $(function() {
         return zoneColor;
       })
       .style("stroke", function(d,i){
+        // this works the same as above
         let zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
         return zoneColor;
       });
@@ -165,7 +166,7 @@ $(function() {
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
-      .tickFormat(formatTime)
+      .tickFormat(d3.timeFormat("%X")))
       .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
@@ -195,7 +196,7 @@ $(function() {
 
     svg.append("text")
       .attr("x", (width / 2))
-      .attr("y", -10)
+      .attr("y", 10)
       .attr("text-anchor", "middle")
       .style("font-size", "24px")
       .style("text-decoration", "underline")
@@ -231,115 +232,3 @@ $(function() {
 
   getTagoData();
 });
-
-//maps the node data to the tree layout
-nodes = treemap(nodes);
-
-//append the svg object to the body of the page
-//appends a 'group' element to 'svg'
-//moves the 'group' element to top left margin
-var svg = d3.select("body").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom),
-    g = svg.append("g")
-      .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")" );
-
-//adds the links between the nodes
-var link = g.selectAll(".link")
-    .data( nodes.descendants().slice(1))
-  .enter().append("path")
-    .attr("class", "link")
-    .style("stroke", function(d) { return d.data.level; })
-    .attr("d", function(d) {
-       return "M" + d.y + "," + d.x
-         + "C" + (d.y + d.parent.y) / 2 + "," + d.x
-         + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
-         + " " + d.parent.y + "," + d.parent.x;
-       });
-
-//adds each node as a group
-var node = g.selectAll(".node")
-    .data(nodes.descendants())
-  .enter().append("g")
-    .attr("class", function(d) {
-      return "node" +
-      (d.children ? " node--internal" : " node--leaf"); })
-    .attr("transform", function(d) {
-      return "translate(" + d.y + "," + d.x + ")"; });
-
-//adds the circle to the node
-node.append("path")
-  .style("stroke", function(d) { return d.data.type; })
-  .style("fill", function(d) { return d.data.level; })
-  .attr("d", d3.symbol()
-      .size(function(d) { return d.data.value * 30; })
-      .type(function (d) { if
-        (d.data.value >= 9) { return d3.symbolCross; } else if
-        (d.data.value <= 9) { return d3.symbolDiamond; }
-      }));
-
-//adds the text to the node
-node.append("text")
-  .attr("dy", ".35em")
-  .attr("x", function(d) { return d.children ?
-    (d.data.value + 4) * - 1 : d.data.value + 4 })
-  .style("text-anchor", function(d) {
-    return d.children ? "end" : "start"; })
-  .text(function(d) { return d.data.name; });
-
-  //maps the node data to the tree layout
-  nodes = treemap(nodes);
-
-  //append the svg object to the body of the page
-  //appends a 'group' element to 'svg'
-  //moves the 'group' element to top left margin
-  var svg = d3.select("body").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom),
-      g = svg.append("g")
-        .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")" );
-
-  //adds the links between the nodes
-  var link = g.selectAll(".link")
-      .data( nodes.descendants().slice(1))
-    .enter().append("path")
-      .attr("class", "link")
-      .style("stroke", function(d) { return d.data.level; })
-      .attr("d", function(d) {
-         return "M" + d.y + "," + d.x
-           + "C" + (d.y + d.parent.y) / 2 + "," + d.x
-           + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
-           + " " + d.parent.y + "," + d.parent.x;
-         });
-
-  //adds each node as a group
-  var node = g.selectAll(".node")
-      .data(nodes.descendants())
-    .enter().append("g")
-      .attr("class", function(d) {
-        return "node" +
-        (d.children ? " node--internal" : " node--leaf"); })
-      .attr("transform", function(d) {
-        return "translate(" + d.y + "," + d.x + ")"; });
-
-  //adds the circle to the node
-  node.append("path")
-    .style("stroke", function(d) { return d.data.type; })
-    .style("fill", function(d) { return d.data.level; })
-    .attr("d", d3.symbol()
-        .size(function(d) { return d.data.value * 30; })
-        .type(function (d) { if
-          (d.data.value >= 9) { return d3.symbolCross; } else if
-          (d.data.value <= 9) { return d3.symbolDiamond; }
-        }));
-
-  //adds the text to the node
-  node.append("text")
-    .attr("dy", ".35em")
-    .attr("x", function(d) { return d.children ?
-      (d.data.value + 4) * - 1 : d.data.value + 4 })
-    .style("text-anchor", function(d) {
-      return d.children ? "end" : "start"; })
-    .text(function(d) { return d.data.name; });
