@@ -20,8 +20,8 @@ $(function() {
   var graphElems = {
     colors: [
       "#ebff00",
+      "#04d218",
       "#ff0000",
-      "#1000c2",
       "dodgerblue",
       "indigo",
       "black"
@@ -30,8 +30,7 @@ $(function() {
     maxActivity: 0
   }
 
-  var svg = d3.select("#graph-container")
-          .append("svg")
+  var svg = d3.select("#graph-container").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .style("background-color", "#d8e0f0").append("g")
@@ -148,8 +147,10 @@ $(function() {
       .attr("width", legendRectSize)
       .attr("height", legendRectSize)
       .style("fill", function(d,i){
+
         let zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
         return zoneColor;
+
       })
       .style("stroke", function(d,i){
         // this works the same as above
