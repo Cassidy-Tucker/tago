@@ -1,10 +1,6 @@
-$(function() {
-  $("#datepicker").datepicker({
-    inline: true,
-    showOtherMonths: true,
-    dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  });
+import './visualization';
 
+$(function() {
   $('#buttonbutton').on('click', (e) =>{
     e.preventDefault()
     var newInterval = $('#intervalPicker').val()
@@ -25,7 +21,11 @@ $(function() {
   var options = '';
 
   for(var i = 5; i <= 120; i += 5){
-    options += '<option value = "' + i + '">' + i +'</option>';
+    if(i === 60) {
+      options += '<option value = "' + i + '" selected="selected">' + i +'</option>';
+    } else {
+        options += '<option value = "' + i + '">' + i +'</option>';
+    }
   }
 
   $('#intervalPicker').html(options)
