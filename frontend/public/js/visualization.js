@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 
 $(function() {
   var margin = {
-    top: 50,
+    top: 70,
     right: 40,
     bottom: 150,
     left: 60
@@ -14,7 +14,7 @@ $(function() {
   var x = d3.scaleTime().range([0, width]);
   var y = d3.scaleLinear().range([height, 0]);
   var y1 = d3.scaleLinear().range([height, 0]);
-  var legendRectSize = 18;
+  var legendRectSize = 12;
   var legendSpacing = 4;
 
   var graphElems = {
@@ -119,7 +119,7 @@ $(function() {
             .duration(200)
             .style("opacity", .9);
 
-            div.html(d.activity.toFixed(2))
+            div.html(d.activity.toFixed(3))
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px");
           })
@@ -153,7 +153,6 @@ $(function() {
 
       })
       .style("stroke", function(d,i){
-        // this works the same as above
         let zoneColor = d3.rgb(domain.zones[i].color[2],domain.zones[i].color[1],domain.zones[i].color[0])
         return zoneColor;
       });
@@ -177,7 +176,7 @@ $(function() {
     svg.append("text")
       .attr("transform",
       "translate(" + (width/2) + " ," +
-      (height + margin.top + 40) + ")")
+      (height + margin.top + 15) + ")")
       .attr("font-size", "20px")
       .style("text-anchor", "middle")
       .text("Time");
@@ -197,7 +196,7 @@ $(function() {
 
     svg.append("text")
       .attr("x", (width / 2))
-      .attr("y", 10)
+      .attr("y", -20)
       .attr("text-anchor", "middle")
       .style("font-size", "24px")
       .style("text-decoration", "underline")
