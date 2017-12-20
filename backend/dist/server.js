@@ -60188,6 +60188,10 @@ router.route("/domain/currentZones/:interval").get((req, res) => {
 
 				filtInt.dateCreated = arr[0].dateCreated;
 
+				let time = new Date(filtInt.dateCreated);
+				time.setHours(time.getHours() - 7);
+				filtInt.dateCreated = time.getTime();
+
 				for (var j in arr) {
 					filtInt.activity += arr[j].activity / arr.length;
 				}
