@@ -231,4 +231,24 @@ $(function() {
   });
 
   getTagoData();
+
+  $('.lightbox_trig').click(() => {
+    var image_href = $(this).find('img').attr('src');
+    if ($('#lightbox').length > 0) {
+      $('#content').html('<img src="' + image_href + '" />');
+      $('#lightbox').show();
+    } else {
+        var lightbox =
+          '<div id="lightbox">' +
+          '<p class="close">Click to close</p>' +
+          '<div id="content">' +
+          '<img src="' + image_href + '" />' +
+          '</div>' +
+          '</div>';
+          $('body').append(lightbox);
+      }
+      $('#lightbox').click(() => {
+        $('#lightbox').hide();
+      })
+  })
 });
