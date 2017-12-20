@@ -8,12 +8,12 @@ $(function() {
     left: 60
   };
 
-  var width = 960 - margin.left - margin.right;
+  var width = 610 - margin.left - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
   var x = d3.scaleTime().range([0, width]);
   var y = d3.scaleLinear().range([height, 0]);
-  var y1 = d3.scaleLinear().range([height, 0]);
+
   var legendRectSize = 12;
   var legendSpacing = 4;
 
@@ -88,7 +88,6 @@ $(function() {
 
         d.date = +d.dateCreated;
         d.activity = +d.activity;
-        d.dateCreated = dc;
       });
 
       graphElems.zones = domain.zones;
