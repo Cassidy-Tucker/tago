@@ -220,10 +220,12 @@ figcaption {
 .hero-heading {
   position: static;
   font-family: Exo, sans-serif;
+  font-size: 44px;
 }
 
 .hero-subheading {
   margin-bottom: 18px;
+  font-size: 18px;
   font-family: Exo, sans-serif;
 }
 
