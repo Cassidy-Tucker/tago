@@ -233,21 +233,53 @@ $(function() {
 
   $('.lightbox_trig').click(() => {
     var image_href = $(this).find('img').attr('src');
+
     if ($('#lightbox').length > 0) {
       $('#content').html('<img src="' + image_href + '" />');
       $('#lightbox').show();
+
     } else {
-        var lightbox =
-          '<div id="lightbox">' +
-          '<p class="close">Click to close</p>' +
-          '<div id="content">' +
-          '<img src="' + image_href + '" />' +
-          '</div>' +
-          '</div>';
-          $('body').append(lightbox);
-      }
-      $('#lightbox').click(() => {
-        $('#lightbox').hide();
-      })
-  })
+      var lightbox =
+        '<div id="lightbox">' +
+        '<div id="content">' +
+        '<img src="' + image_href + '" />' +
+        '</div>' +
+        '</div>';
+
+      $('body').append(lightbox);
+    }
+
+    $('#lightbox').click(() => {
+      $('#content img').remove()
+      $('#lightbox').hide();
+    });
+  });
+
+  $('.graphLB').click(() => {
+
+    let graphRef = $('svg')[0]
+
+    if ($('#lightbox').length > 0) {
+      console.log("greater than")
+      $('svg').clone().appendTo('#content');
+      $('#lightbox').show();
+    } else {
+      console.log(graphRef)
+      var lightbox =
+        '<div id="lightbox">' +
+        '<div id="content">' +
+        '</div>' +
+        '</div>';
+
+      $('body').append(lightbox);
+      $('svg').clone().appendTo('#content');
+      // $('#content').append(graphRef)
+    }
+
+    $('#lightbox').click(() => {
+      $('#lightbox').hide();
+      $('#content svg').remove()
+    });
+  });
+
 });
