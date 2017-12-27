@@ -861,3 +861,20 @@ div.tooltip{
   align-items: center;
   justify-content: center;
 }
+
+#intervalPicker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('../img/arrow.png');
+  background-repeat: no-repeat;
+  background-size: 20px;
+  width: 70px;
+  background-position: right;
+  margin-top:12px;
+  margin-right: 15px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color:  #dee6f4;
+  text-align: left;
+}
