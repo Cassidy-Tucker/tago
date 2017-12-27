@@ -13,6 +13,7 @@ $(function() {
 
   var x = d3.scaleTime().range([0, width]);
   var y = d3.scaleLinear().range([height, 0]);
+  var formatTime = d3.timeFormat("%X");
 
   var legendRectSize = 12;
   var legendSpacing = 4;
@@ -118,10 +119,21 @@ $(function() {
             .duration(200)
             .style("opacity", .9);
 
-            div.html(d.activity.toFixed(3))
+            div.html(formatTime(d.date) + "<br/>" + d.activity.toFixed(3))
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px");
           })
+          // .on("mouseover", function(d) {
+          //   return tooltip.style("visability", "visable");
+          // })
+          // .on("mousemove", function(d) {
+          //   return tooltip;
+          //     .style("top", (d3.event.pageY + 16) + "px")
+          //     .style("left", (d3.event.pageX + 16) + "px");
+          // })
+          // .on("mouseout", function(d) {
+          //   return tooltip.style("visability", "hidden");
+          // });
           .on("mouseout", function(d) {
             div.transition()
             .duration(500)
