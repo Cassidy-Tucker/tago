@@ -123,17 +123,6 @@ $(function() {
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px");
           })
-          // .on("mouseover", function(d) {
-          //   return tooltip.style("visability", "visable");
-          // })
-          // .on("mousemove", function(d) {
-          //   return tooltip;
-          //     .style("top", (d3.event.pageY + 16) + "px")
-          //     .style("left", (d3.event.pageX + 16) + "px");
-          // })
-          // .on("mouseout", function(d) {
-          //   return tooltip.style("visability", "hidden");
-          // });
           .on("mouseout", function(d) {
             div.transition()
             .duration(500)
