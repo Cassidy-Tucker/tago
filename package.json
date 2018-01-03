@@ -10,7 +10,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "heroku-postbuild": "concurrently \"webpack --config frontend/webpack.config.client.js\" \"webpack --config backend/webpack.config.server.js\"",
+    "heroku-postbuild": "concurrently \"cd frontend && npm run prod:client\" \"cd backend && npm run prod:server\"",
     "heroku-prebuild": "concurrently \"cd frontend && npm install\" \"cd backend && npm install\"",
     "start": "concurrently \"node backend/dist/server.js\" \"node frontend/server.js\""
       },
