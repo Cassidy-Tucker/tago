@@ -1,0 +1,28 @@
+{
+  "name": "tago",
+  "version": "1.0.0",
+  "engine": {
+    "node": "6.11.3"
+  },
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "concurrently \"node backend/dist/server.js\" \"node frontend/server.js\""
+      },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Montana-Code-School/tago.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Montana-Code-School/tago/issues"
+  },
+  "homepage": "https://github.com/Montana-Code-School/tago#readme",
+  "dependencies": {
+    "concurrently": "^3.5.1"
+  }
+}
