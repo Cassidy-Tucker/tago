@@ -24,4 +24,4 @@ app.use('/api', DomainRouter);
 app.use('/api', ZoneRouter);
 app.use('/api', HeatmapRouter);
 
-app.listen(3001, () => console.log('working, yesh.. working'))
+app.listen(proccess.env.PORT || 3001, () => console.log('working, yesh.. working'))
