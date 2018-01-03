@@ -10,6 +10,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "postinstall": "npm install && npm run m",
     "start": "node server.js",
     "dev:start": "nodemon server.js",
     "m": "webpack --config webpack.config.client.js",
