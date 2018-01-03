@@ -213,7 +213,7 @@ $(function() {
     $.ajax({
       type:'GET',
       contentType:'application/json; charset=utf-8',
-      url:'http://localhost:3001/api/domain/currentZones/' + duration,
+      url:'https://tago-app.herokuapp.com/api/domain/currentZones/' + duration,
       dataType:"json",
       success: function(domain, error) {
         if (error != 'success') console.log(error);
