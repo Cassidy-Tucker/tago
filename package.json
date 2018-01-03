@@ -10,8 +10,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "heroku-postbuild": "concurrently \"cd frontend && npm run prod:client\" \"cd backend && npm run prod:server\"",
-    "heroku-prebuild": "concurrently \"cd frontend && npm install\" \"cd backend && npm install\"",
+    "postinstall": "concurrently \"cd frontend && npm install\" \"cd backend && npm install\" && concurrently \"cd frontend && npm run prod:client\" \"cd backend && npm run prod:server\"",
     "start": "concurrently \"node backend/dist/server.js\" \"node frontend/server.js\""
       },
   "repository": {
