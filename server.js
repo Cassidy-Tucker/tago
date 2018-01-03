@@ -2,13 +2,11 @@ const path = require ('path');
 const express = require ('express');
 const app = express();
 const mongoose = require ('mongoose');
-const DomainRouter = require('./routes/domain');
-const ZoneRouter = require('./routes/zone');
-const HeatmapRouter = require('./routes/heatmap');
+const DomainRouter = require('./backend/src/routes/domain');
+const ZoneRouter = require('./backend/src/routes/zone');
+const HeatmapRouter = require('./backend/src/routes/heatmap');
 
-mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago", {useMongoClient: true});
-
-app.get('/', (req, res) => res.send('Hello!'))
+mongoose.connect("mongodb://Keesha:skool16@ds113826.mlab.com:13826/tago");
 
 const router = express.Router();
 
@@ -18,6 +16,8 @@ var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 }
+
+app.use(express.static(path.join(__dirname, 'frontend/public')));
 
 app.use(allowCrossDomain);
 app.use('/api', DomainRouter);
