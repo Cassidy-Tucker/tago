@@ -10,9 +10,12 @@
     "doc": "docs"
   },
   "scripts": {
-    "postinstall": "concurrently \"cd frontend && npm install --dev\" \"cd backend && npm install --dev\" && concurrently \"cd frontend && npm run prod:client\" \"cd backend && npm run prod:server\"",
-    "start": "concurrently \"node backend/dist/server.js\" \"node frontend/server.js\""
-      },
+    "postinstall": "npm run m",
+    "start": "node server.js",
+    "dev:start": "nodemon server.js",
+    "m": "webpack --config webpack.config.client.js",
+    "t": "webpack --config webpack.config.server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Montana-Code-School/tago.git"
@@ -24,6 +27,18 @@
   },
   "homepage": "https://github.com/Montana-Code-School/tago#readme",
   "dependencies": {
-    "concurrently": "^3.5.1"
+    "concurrently": "^3.5.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "bluebird": "^3.5.1",
+    "d3": "^4.12.2",
+    "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "mongoose": "^5.0.0-rc1",
+    "path": "^0.12.7",
+    "webpack": "^3.10.0",
+    "webpack-preset-babel-stage-2": "^0.2.0"
   }
 }
