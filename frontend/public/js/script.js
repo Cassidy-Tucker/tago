@@ -4,7 +4,7 @@ $(function() {
   $('#buttonbutton').on('click', (e) =>{
     e.preventDefault()
     var newInterval = $('#intervalPicker').val()
-    var dateRoot = 'http://localhost:3001'
+    var dateRoot = 'https://tago-app.herokuapp.com'
 
     function getDateData() {
       $.ajax({

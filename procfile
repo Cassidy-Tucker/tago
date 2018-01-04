@@ -1,2 +1,1 @@
-web: node backend/dist/server.js
-web: node frontend/server.js
+web: npm run start

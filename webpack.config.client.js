@@ -1,7 +1,7 @@
-const dst = __dirname + '/public/js'
+const dst = __dirname + '/frontend/public/js'
 
 module.exports = {
-  entry: './public/js/script.js',
+  entry: dst + '/script.js',
   output: {
     path: dst,
     filename: 'bundle.js',
