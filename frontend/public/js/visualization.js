@@ -126,7 +126,9 @@ $(function() {
           .on("mouseout", function(d) {
             div.transition()
             .duration(500)
-            .style("opacity", 0);
+            .style("opacity", 0)
+            .style("left", "0px")
+            .style("top", "0px");
           });
     }
 
