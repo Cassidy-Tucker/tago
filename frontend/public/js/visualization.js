@@ -23,9 +23,9 @@ $(function() {
       "#ebff00",
       "#04d218",
       "#ff0000",
-      "dodgerblue",
-      "indigo",
-      "black"
+      "#1e90ff",
+      "#4b0082",
+      "#000000"
     ],
     zones: [],
     maxActivity: 0
@@ -125,8 +125,8 @@ $(function() {
           })
           .on("mouseout", function(d) {
             div.transition()
-            .duration(500)
             .style("opacity", 0)
+            .duration(5)
             .style("left", "0px")
             .style("top", "0px");
           });
@@ -202,7 +202,7 @@ $(function() {
       .attr("text-anchor", "middle")
       .style("font-size", "24px")
       .style("text-decoration", "underline")
-      .text("Activity vs. Time Graph");
+      .text("Activity vs. Time");
   }
 
   function getTagoData(){
